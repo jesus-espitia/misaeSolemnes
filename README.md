@@ -1,11 +1,11 @@
 # ESTRUCTURA DE CARPETAS
-![](/RECURSOS/estructuraDeCarpetas.png)
+![](/RECURSOS/AUDIOVISUAL/estructuraDeCarpetas.png)
 
 # LOGO PROYECTO 
-![](/RECURSOS/LOGO.png)
+![](/RECURSOS/AUDIOVISUAL/LOGO.png)
 
 # PALETA DE COLORES Y RECOMENDACION DE LUGAR DE COLOR
-![](/RECURSOS/Captura.PNG)
+![](/RECURSOS/AUDIOVISUAL/Captura.PNG)
 - También hay un [colores.html](/RECURSOS/ARCHIVOS/colores.html) donde se muestran como se ven en la pagina.
 
 ## CONTEXTO DE PAGINA
