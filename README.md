@@ -1,6 +1,6 @@
 # ESTRUCTURA DE CARPETAS
 ![](/RECURSOS/AUDIOVISUAL/estructuraDeCarpetas.png)
-# porno
+
 # LOGO PROYECTO 
 ![](/RECURSOS/AUDIOVISUAL/LOGO.png)
 
