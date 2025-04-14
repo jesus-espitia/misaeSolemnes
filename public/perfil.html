@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil - Misae Solemnes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>MISAE SOLEMNES ✝️</h1>
+        <nav>
+            <a href="index.html">INICIO</a>
+            <a href="#">ACERCA DE</a>
+            <a href="#">TRASMICIONES</a>
+            <a href="logout.html">CERRAR SESIÓN</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Bienvenido, <span id="nombre"></span></h2>
+            <p><strong>Correo:</strong> <span id="correo"></span></p>
+            <p><strong>País:</strong> <span id="pais"></span></p>
+            <p><strong>Miembro desde:</strong> <span id="fecha"></span></p>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 MISAE SOLEMNES - Todos los derechos reservados.
+    </footer>
+
+    <script>
+        fetch('../api/usuario/perfil.php')
+            .then(response => {
+                if (!response.ok) {
+                    window.location.href = "login.html";
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("nombre").textContent = data.nombre_usuario;
+                document.getElementById("correo").textContent = data.correo_usuario;
+                document.getElementById("pais").textContent = data.pais_usuario;
+                document.getElementById("fecha").textContent = data.fechaRegistro_usuario;
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Misae Solemnes</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <header>
+        <h1>MISAE SOLEMNES ✝️</h1>
+        <nav>
+            <a href="index.html">INICIO</a>
+            <a href="#">ACERCA DE</a>
+            <a href="#">TRASMICIONES</a>
+            <a href="login.html">LOGIN</a>
+            <a href="registro.html">REGISTRO</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Iniciar sesión</h2>
+            <form action="../api/usuario/login.php" method="POST">
+                <input type="email" name="correo_usuario" placeholder="Correo electrónico" required>
+                <input type="password" name="contrasena_usuario" placeholder="Contraseña" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 MISAE SOLEMNES - Todos los derechos reservados.
+    </footer>
+</body>
+</html>
