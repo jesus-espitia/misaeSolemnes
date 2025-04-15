@@ -10,7 +10,7 @@ $contrasena = $_POST['contrasena_usuario'] ?? '';
 
 // Validar campos
 if (empty($correo) || empty($contrasena)) {
-    echo "<script>alert('Por favor, completa todos los campos'); window.location.href='../../public/login.html';</script>";
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Faltan+campos&redirect=../../login.html");
     exit();
 }
 
@@ -27,13 +27,13 @@ if ($result->num_rows === 1) {
     if (password_verify($contrasena, $usuario['contraseña_usuario'])) {
         $_SESSION['usuario_id'] = $usuario['id_usuario'];
         $_SESSION['nombre'] = $usuario['nombre_usuario'];
-        header("Location: ../../public/inicio.html");
+        header("Location: ../../perfil.html");
         exit();
     } else {
-        echo "<script>alert('Contraseña incorrecta'); window.location.href='../../public/login.html';</script>";
+        header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Contraseña+incorrecta&redirect=../../login.html");
     }
 } else {
-    echo "<script>alert('Correo no registrado'); window.location.href='../../public/login.html';</script>";
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Correo+no+registrado&redirect=../../login.html");
 }
 
 $stmt->close();

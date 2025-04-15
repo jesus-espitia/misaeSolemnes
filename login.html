@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Misae Solemnes</title>
     <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="assets/icon/cruzar (1).png">
 </head>
 <body>
     <header>
@@ -22,13 +23,12 @@
         <section class="form-container">
             <h2>Iniciar sesión</h2>
             <form action="../api/usuario/login.php" method="POST">
-                <input type="email" name="correo_usuario" placeholder="Correo electrónico" required>
-                <input type="password" name="contrasena_usuario" placeholder="Contraseña" required>
+                <input type="email" name="correo_usuario" placeholder="Correo electrónico" autocomplete="off">
+                <input type="password" name="contrasena_usuario" placeholder="Contraseña" autocomplete="off">
                 <button type="submit">Entrar</button>
             </form>
         </section>
     </main>
-
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>

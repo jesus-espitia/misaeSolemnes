@@ -10,7 +10,7 @@ $contraseña = $_POST['contraseña_usuario'] ?? '';
 $pais = $_POST['pais_usuario'] ?? '';
 
 if (empty($nombre) || empty($correo) || empty($contraseña) || empty($pais)) {
-    echo "<script>alert('Todos los campos son obligatorios'); window.location.href='../../public/registro.html';</script>";
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Faltan+campos&redirect=../../registro.html");
     exit();
 }
 
@@ -22,10 +22,9 @@ $stmt = $conn->prepare("INSERT INTO USUARIOS (nombre_usuario, correo_usuario, co
 $stmt->bind_param("ssss", $nombre, $correo, $hash, $pais);
 
 if ($stmt->execute()) {
-    echo "<script>alert('Registro exitoso. Ahora puedes iniciar sesión.'); window.location.href='../../public/login.html';</script>";
+    header("Location: ../utils/alerta.php?tipo=success&titulo=¡BIEN+HECHO!&mensaje=Ya+puedes+ingresar&redirect=../../login.html");
 } else {
-    echo "<script>alert('Error al registrar. ¿El correo ya existe?'); window.location.href='../../public/registro.html';</script>";
-}
+    header("Location: ../utils/alerta.php?tipo=info&titulo=¡YA+TIENES+UNA+CUENTA!&mensaje=El+correo+ya+existe&redirect=../../registro.html");}
 
 $stmt->close();
 $conn->close();
