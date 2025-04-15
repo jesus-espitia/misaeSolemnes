@@ -1,6 +1,8 @@
 # ESTRUCTURA DE CARPETAS
+- Esctructura Actualizada
 ![](/RECURSOS/AUDIOVISUAL/estructuraDeCarpetas.png)
-
+- Estructura Antigua
+![](/RECURSOS/AUDIOVISUAL/estructuraDeCarpetas1.png)
 # LOGO PROYECTO 
 ![](/RECURSOS/AUDIOVISUAL/LOGO.png)
 
