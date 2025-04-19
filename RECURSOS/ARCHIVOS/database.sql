@@ -65,6 +65,10 @@ CREATE TABLE PETICIONES (
 );
 
 
+ALTER TABLE SACERDOTES ADD COLUMN usuario_id INT UNIQUE;
+ALTER TABLE SACERDOTES ADD FOREIGN KEY (usuario_id) REFERENCES USUARIOS(id_usuario);
+
+
 -- INSERCIONES 
 
 INSERT INTO USUARIOS (nombre_usuario, correo_usuario, contraseña_usuario, pais_usuario)

@@ -27,7 +27,7 @@ if ($result->num_rows === 1) {
     if (password_verify($contrasena, $usuario['contraseña_usuario'])) {
         $_SESSION['usuario_id'] = $usuario['id_usuario'];
         $_SESSION['nombre'] = $usuario['nombre_usuario'];
-        header("Location: ../../perfil.html");
+        header("Location: /../perfil.php");
         exit();
     } else {
         header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Contraseña+incorrecta&redirect=../../login.html");
