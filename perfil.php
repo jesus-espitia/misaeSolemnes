@@ -17,10 +17,10 @@ $stmtUsuario->execute();
 $resultUsuario = $stmtUsuario->get_result();
 $usuario = $resultUsuario->fetch_assoc();
 
-// Verificar si el usuario también es sacerdote
-$sqlSacerdote = "SELECT * FROM SACERDOTES WHERE correoElectronico_sacerdote = ?";
+// Verificar si el usuario también es sacerdote (usando usuario_id, no el correo)
+$sqlSacerdote = "SELECT * FROM SACERDOTES WHERE usuario_id = ?";
 $stmtSacerdote = $conn->prepare($sqlSacerdote);
-$stmtSacerdote->bind_param("s", $usuario['correo_usuario']);
+$stmtSacerdote->bind_param("i", $usuario_id);
 $stmtSacerdote->execute();
 $resultSacerdote = $stmtSacerdote->get_result();
 $esSacerdote = $resultSacerdote->num_rows > 0;
@@ -39,14 +39,16 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Perfil - Misae Solemnes</title>
-    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="icon" href="assets/icon/cruzar (1).png">
 </head>
 <body>
     <header>
         <h1>MISAE SOLEMNES ✝️</h1>
         <nav>
-            <a href="index.html">INICIO</a>
-            <a href="transmisiones.php">TRANSMISIONES</a>
+            <a href="pos/inicio.html">INICIO</a>
+            <a href="#">ACERCA DE</a>
+            <a href="pos/transmisiones.php">TRANSMISIONES</a>
             <a href="logout.html">CERRAR SESIÓN</a>
         </nav>
     </header>
@@ -86,6 +88,7 @@ $conn->close();
             </section>
         <?php endif; ?>
 
+        <?php if ($esSacerdote): ?>
         <section class="form-container">
             <h3>Crear Nueva Transmisión</h3>
             <form action="api/misa/crear_transmision.php" method="POST">
@@ -112,6 +115,7 @@ $conn->close();
                 <button type="submit">Crear Transmisión</button>
             </form>
         </section>
+        <?php endif; ?>
     </main>
 
     <footer>
