@@ -49,7 +49,7 @@ $conn->close();
             <a href="pos/inicio.html">INICIO</a>
             <a href="#">ACERCA DE</a>
             <a href="pos/transmisiones.php">TRANSMISIONES</a>
-            <a href="logout.html">CERRAR SESIÓN</a>
+            <a href="/pos/logout.html">CERRAR SESIÓN</a>
         </nav>
     </header>
 
@@ -66,7 +66,7 @@ $conn->close();
                 <h3>Crear Nueva Misa</h3>
                 <form action="api/misa/crear_misa.php" method="POST">
                     <label for="titulo">Título:</label>
-                    <input type="text" name="titulo_misa">
+                    <input type="text" name="titulo_misa" autocomplete="off">
 
                     <label for="fecha">Fecha:</label>
                     <input type="date" name="fecha_misa">
@@ -93,7 +93,7 @@ $conn->close();
             <h3>Crear Nueva Transmisión</h3>
             <form action="api/misa/crear_transmision.php" method="POST">
                 <label for="enlace">Enlace del video (YouTube):</label>
-                <input type="url" name="enlaceVideo_transmision">
+                <input type="url" name="enlaceVideo_transmision" autocomplete="off">
 
                 <label for="estado">Estado de la Transmisión:</label>
                 <select name="estado_transmision">
@@ -113,8 +113,17 @@ $conn->close();
                 </select>
 
                 <button type="submit">Crear Transmisión</button>
-            </form>
         </section>
+        
+        <?php endif; ?>
+
+        <?php if ($esSacerdote): ?>
+            <section class="form-container">
+                <h3>Aceder a Administrador</h3>
+                <center>
+                <a href="/api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="/assets/icon/cruzar.png" width="50"></a>
+                </center>
+            </section>
         <?php endif; ?>
     </main>
 

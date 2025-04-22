@@ -16,7 +16,7 @@ $plataforma = $_POST['plataforma_transmision'] ?? '';
 $usuario_id = $_SESSION['usuario_id'];
 
 if (empty($enlace) || empty($estado) || empty($misa_id) || empty($plataforma)) {
-    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Faltan+campos&redirect=../../perfil.php");
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Todos+los+campos+son+obligatorios&redirect=../../perfil.php");
     exit;
 }
 
@@ -30,7 +30,7 @@ $stmt->execute();
 if ($stmt->affected_rows > 0) {
     header("Location: ../utils/alerta.php?tipo=success&titulo=¡LISTO!&mensaje=Se+ha+creado+correctamete&redirect=../../perfil.php");
 } else {
-    echo "Error al crear la transmisión.";
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Error+al+crear+la+transmisión&redirect=../../perfil.php");
 }
 
 $stmt->close();

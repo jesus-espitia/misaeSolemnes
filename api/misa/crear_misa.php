@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
-    echo "Debes iniciar sesión para crear una misa.";
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Debes+iniciar+sesión+para+crear+una+misa&redirect=../../perfil.php");
     exit;
 }
 
@@ -16,7 +16,7 @@ $tipo = $_POST['tipo_misa'] ?? '';
 $sacerdote_id = $_POST['sacerdote_id'] ?? null;
 
 if (empty($titulo) || empty($fecha) || empty($hora) || empty($tipo) ) {
-    echo "Todos los campos son obligatorios.";
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Todos+los+campos+son+obligatorios&redirect=../../perfil.php");
     exit;
 }
 
@@ -28,9 +28,9 @@ $stmt->bind_param("ssssi", $titulo, $fecha, $hora, $tipo, $sacerdote_id);
 $stmt->execute();
 
 if ($stmt->affected_rows > 0) {
-    echo "Misa creada exitosamente.";
+    header("Location: ../utils/alerta.php?tipo=success&titulo=¡LISTO!&mensaje=Misa+creada+exitosamente&redirect=../../perfil.php");
 } else {
-    echo "Hubo un error al crear la misa.";
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Hubo+un+error+al+crear+la+misa&redirect=../../perfil.php");
 }
 
 $stmt->close();

@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f0dd;
+    color: #3c3c3c;
+}
+
+
+header {
+    background-color: #5C3B1D;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+header h1 {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+header img {
+    height: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+th, td {
+    border: 1px solid #999;
+    padding: 12px;
+    text-align: center;
+}
+th {
+    background-color: #5c3b22;
+    color: #fff;
+}
+tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+.acciones button {
+    margin: 0 5px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.editar {
+    background-color: #3498db;
+    color: white;
+}
+.eliminar {
+    background-color: #e74c3c;
+    color: white;
+}
+
+
+footer {
+    text-align: center;
+    background-color: #2e1d12;
+    color: #fff;
+    padding: 15px;
+    font-size: 14px;
+}
