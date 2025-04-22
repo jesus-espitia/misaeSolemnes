@@ -3,7 +3,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Alerta</title>
+    <title>ALERTA</title>
+    <link rel="icon" href="../../assets/icon/cruzar (1).png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>

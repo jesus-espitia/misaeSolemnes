@@ -119,7 +119,7 @@ $conn->close();
 
         <?php if ($esSacerdote): ?>
             <section class="form-container">
-                <h3>Aceder a Administrador</h3>
+                <h3>Acceder a Administrador</h3>
                 <center>
                 <a href="/api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="/assets/icon/cruzar.png" width="50"></a>
                 </center>

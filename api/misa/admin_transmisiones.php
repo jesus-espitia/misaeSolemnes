@@ -5,7 +5,7 @@ $conn = conectarBD();
 
 // Verifica si el usuario es un sacerdote
 if (!isset($_SESSION['usuario_id'])) {
-    echo "<p>No tienes permiso para ver esta página.</p>";
+    header("Location: ../utils/alerta.php?tipo=warning&titulo=¡ADVERTENCIA!&mensaje=No+tienes+permiso+para+ver+esta+página&redirect=../../../index.html");
     exit;
 }
 
@@ -19,7 +19,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
-    echo "<p>Acceso restringido. Solo para sacerdotes.</p>";
+    header("Location: ../utils/alerta.php?tipo=warning&titulo=¡ADVERTENCIA!&mensaje=Acceso+restringido.+Solo+para+sacerdotes&redirect=../../../pos/inicio.html");
+    echo "<p>Acceso restringido. Solo para sacerdotes</p>";
     exit;
 }
 
@@ -100,7 +101,7 @@ $result = $stmt->get_result();
                             <form action="eliminar_misa_y_transmision.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="id_misa" value="<?= $row['id_misa'] ?>">
                                 <input type="hidden" name="id_transmision" value="<?= $row['id_transmision'] ?>">
-                                <button class="eliminar" onclick="return confirm('¿Eliminar misa y transmisión asociada?');">Eliminar Todo</button>
+                                <button class="eliminar" onclick="return confirm('¿Eliminar misa y transmisión asociada?');">Eliminar</button>
                             </form>
                         <?php endif; ?>
                     </td>

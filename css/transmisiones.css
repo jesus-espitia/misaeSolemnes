@@ -97,9 +97,10 @@ main {
 
 
 footer {
+    background-color: #3c2b1a;
+    color: white;
     text-align: center;
-    background-color: #2e1d12;
-    color: #fff;
-    padding: 15px;
-    font-size: 14px;
+    padding: 2rem;
+    font-size: 0.9rem;
+    margin-top: 4rem;
 }

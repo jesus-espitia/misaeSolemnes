@@ -69,45 +69,19 @@ ALTER TABLE SACERDOTES ADD COLUMN usuario_id INT UNIQUE;
 ALTER TABLE SACERDOTES ADD FOREIGN KEY (usuario_id) REFERENCES USUARIOS(id_usuario);
 
 
-
-
--- INSERCIONES 
-INSERT INTO USUARIOS (nombre_usuario, correo_usuario, contraseña_usuario, pais_usuario)
-VALUES 
-('Padre José', 'padrejose@misa.com', '123456', 'Colombia'),
-('María López', 'maria@gmail.com', 'maria123', 'México'),
-('Carlos Ruiz', 'carlos@gmail.com', 'carlos123', 'Argentina'),
-('Ana Torres', 'ana@gmail.com', 'ana123', 'Chile');
-
-
 INSERT INTO PARROQUIAS (nombre_parroquia, direccion_parroquia, ciudad_parroquia, telefono_parroquia, correoElectronico_parroquia)
 VALUES 
 ('Parroquia San Juan', 'Calle 10 #12-34', 'Medellín', '3100000001', 'sanjuan@iglesia.com'),
 ('Parroquia Nuestra Señora', 'Av. Bolívar 123', 'Bogotá', '3100000002', 'nuestra@iglesia.com'),
-('Parroquia Cristo Rey', 'Cra 45 #33-21', 'Cali', '3100000003', 'cristorey@iglesia.com'),
-('Parroquia San Pedro', 'Calle 50 #22-10', 'Barranquilla', '3100000004', 'sanpedro@iglesia.com');
+('Parroquia Cristo Rey', 'Cra 45 #33-21', 'Cali', '3100000003', 'cristorey@iglesia.com');
 
 -- Asegúrate de que los IDs coincidan con los insertados antes.
 INSERT INTO SACERDOTES (nombre_sacerdote, correoElectronico_sacerdote, telefono_sacerdote, parroquia_id, usuario_id)
 VALUES 
-('Padre José', 'padrejose@misa.com', '3107654321', 1, 1),
-('Padre Luis', 'padreluis@misa.com', '3107654322', 2, NULL),
-('Padre Miguel', 'padremiguel@misa.com', '3107654323', 3, NULL),
-('Padre Andrés', 'padreandres@misa.com', '3107654324', 4, NULL);
+('Padre Kenny', 'kennyflorian20@gmail.com', '3107654321', 1, 1),
+('Padre Santiago', 'santyvalethony03@gmail.com', '3107654322', 2, 2),
+('Padre Jesús', 'espitiaguzmanjesusmanuel@gmail.com', '3107654323', 3, 3);
 
-INSERT INTO MISAS (titulo_misa, fecha_misa, hora_misa, tipo_misa, sacerdote_id)
-VALUES 
-('Misa Dominical', '2025-04-14', '09:00:00', 'dominical', 1),
-('Misa por los Difuntos', '2025-04-15', '18:00:00', 'funeral', 1),
-('Misa de Matrimonio', '2025-04-16', '15:00:00', 'boda', 1),
-('Misa de Acción de Gracias', '2025-04-17', '11:00:00', 'otra', 1);
-
-INSERT INTO TRANSMISIONES (enlaceVideo_transmision, plataforma_transmision, estado_transmision, misa_id)
-VALUES 
-('https://www.youtube.com/watch?v=abc123def01', 'YouTube', 'en vivo', 1),
-('https://www.youtube.com/watch?v=xyz456ghi02', 'YouTube', 'programada', 2),
-('https://www.youtube.com/watch?v=jkl789mno03', 'YouTube', 'finalizada', 3),
-('https://www.youtube.com/watch?v=uvw321pqr04', 'Facebook', 'en vivo', 4);
 
 INSERT INTO PETICIONES (contenido, tipo, usuario_id, misa_id)
 VALUES 
