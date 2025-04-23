@@ -210,7 +210,7 @@ main{
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
 }
 .hero-img2 img {
-    max-width: 500px;
+    max-width: 479px;
     padding: 2rem 0;
 }
 .hero-text4{
@@ -218,7 +218,6 @@ main{
     color: white;
     text-align: center;
     margin-top: 3rem;
-    padding: 1.5rem;
     border-radius: 10px;
     max-width: 40em;
     font-size: 1.5rem;
@@ -226,7 +225,7 @@ main{
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
 }
 .hero-text4 p{
-    padding: 1rem 0;
+    padding: 1rem 1.5rem;
 }
 footer {
     width: 100%;
