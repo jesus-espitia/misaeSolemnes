@@ -8,7 +8,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f0f0dd;
     color: #3c3c3c;
-}   
+}
 
 
 header {
@@ -18,6 +18,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 45px;
 }
 
 header h1 {
@@ -44,58 +45,41 @@ nav a:hover {
     text-decoration: underline;
 }
 
-
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.formulario {
-    background-color: #8c6239;
-    color: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    max-width: 400px;
+table {
     width: 100%;
-    font-size: 18px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+    border-collapse: collapse;
+    margin-top: 30px;
 }
-
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-}
-
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-button {
-    width: 100%;
+th, td {
+    border: 1px solid #999;
     padding: 12px;
+    text-align: center;
+}
+th {
     background-color: #5c3b22;
-    color: white;
+    color: #fff;
+}
+tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+.acciones button {
+    margin: 0 5px;
+    padding: 6px 12px;
     border: none;
     border-radius: 6px;
-    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    justify-content: space-between;
+}
+.editar {
+    background-color: #3498db;
+    color: white;
+}
+.eliminar {
+    background-color: #e74c3c;
+    color: white;
 }
 
-button:hover {
-    background-color: #4a2f18;
-}
 
 footer {
     background-color: #3c2b1a;
