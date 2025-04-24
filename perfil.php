@@ -53,7 +53,7 @@ $conn->close();
                 <li><a href="pos/inicio.html">INICIO</a></li>
                 <li><a href="pos/acercaDe.html">ACERCA DE</a></li>
                 <li><a href="pos/transmisiones.php">TRANSMISIONES</a></li>
-                <li><a href="pos/logout.html">CERRAR SESIÓN</a></li>
+                <li><a href="/pos/logout.html">CERRAR SESIÓN</a></li>
               </ul>
             </div>
         </div>
@@ -61,7 +61,7 @@ $conn->close();
             <a href="pos/inicio.html">INICIO</a>
             <a href="pos/acercaDe.html">ACERCA DE</a>
             <a href="pos/transmisiones.php">TRANSMISIONES</a>
-            <a href="pos/logout.html">CERRAR SESIÓN</a>
+            <a href="/pos/logout.html">CERRAR SESIÓN</a>
         </nav>
     </header>
 

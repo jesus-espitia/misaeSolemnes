@@ -58,20 +58,20 @@ $result = $stmt->get_result();
             <a id="toggle" href="#"><span></span></a>
             <div id="menu">
               <ul>
-                <li><a href="../../pos/inicio.html">INICIO</a></li>
-                <li><a href="../../pos/acercaDe.html">ACERCA DE</a></li>
-                <li><a href="../../pos/transmisiones.php">TRASMICIONES</a></li>
-                <li><a href="../../perfil.php">PERFIL</a></li>
-                <li><a href="../../pos/logout.html">CERRAR SESIÓN</a></li>
+                <li><a href="/pos/inicio.html">INICIO</a></li>
+                <li><a href="/pos/acercaDe.html">ACERCA DE</a></li>
+                <li><a href="/pos/transmisiones.php">TRASMICIONES</a></li>
+                <li><a href="/perfil.php">PERFIL</a></li>
+                <li><a href="/pos/logout.html">CERRAR SESIÓN</a></li>
               </ul>
             </div>
         </div>
         <nav class="menu">
-            <a href="../../pos/inicio.html">INICIO</a>
-            <a href="../../pos/acercaDe.html">ACERCA DE</a>
-            <a href="../../pos/transmisiones.php">TRASMICIONES</a>
-            <a href="../../perfil.php">PERFIL</a>
-            <a href="../../pos/logout.html">CERRAR SESIÓN</a>
+            <a href="/pos/inicio.html">INICIO</a>
+            <a href="/pos/acercaDe.html">ACERCA DE</a>
+            <a href="/pos/transmisiones.php">TRASMICIONES</a>
+            <a href="/perfil.php">PERFIL</a>
+            <a href="/pos/logout.html">CERRAR SESIÓN</a>
         </nav>
     </header>
     <h2 style="text-align:center;">Panel de Administración de Transmisiones</h2>

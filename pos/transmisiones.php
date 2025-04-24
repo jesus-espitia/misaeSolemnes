@@ -13,7 +13,7 @@
         <h1>MISAE SOLEMNES ✝️</h1>
         <nav>
             <a href="inicio.html">INICIO</a>
-            <a href="#">ACERCA DE</a>
+            <a href="acercaDe.html">ACERCA DE</a>
             <a href="../perfil.php">PERFIL</a>
             <a href="logout.html">CERRAR SESIÓN</a>
         </nav>
