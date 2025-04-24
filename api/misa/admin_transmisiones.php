@@ -48,67 +48,82 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <title>Misae Solemnes | ADMINISTRADOR</title>
     <link rel="stylesheet" href="../../css/admin.css">
+    <script src="../../js/menu.js" defer></script>
     <link rel="icon" href="../../assets/icon/cruzar (1).png">
 </head>
 <body>
     <header>
         <h1>MISAE SOLEMNES ✝️</h1>
-        <nav>
-            <a href="/pos/inicio.html">INICIO</a>
-            <a href="#">ACERCA DE</a>
-            <a href="/pos/transmisiones.php">TRASMICIONES</a>
-            <a href="/perfil.php">PERFIL</a>
-            <a href="/pos/logout.html">CERRAR SESIÓN</a>
+        <div class="menu-container">
+            <a id="toggle" href="#"><span></span></a>
+            <div id="menu">
+              <ul>
+                <li><a href="../../pos/inicio.html">INICIO</a></li>
+                <li><a href="../../pos/acercaDe.html">ACERCA DE</a></li>
+                <li><a href="../../pos/transmisiones.php">TRASMICIONES</a></li>
+                <li><a href="../../perfil.php">PERFIL</a></li>
+                <li><a href="../../pos/logout.html">CERRAR SESIÓN</a></li>
+              </ul>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="../../pos/inicio.html">INICIO</a>
+            <a href="../../pos/acercaDe.html">ACERCA DE</a>
+            <a href="../../pos/transmisiones.php">TRASMICIONES</a>
+            <a href="../../perfil.php">PERFIL</a>
+            <a href="../../pos/logout.html">CERRAR SESIÓN</a>
         </nav>
     </header>
     <h2 style="text-align:center;">Panel de Administración de Transmisiones</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Título de Misa</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Tipo</th>
-                <th>Enlace Video</th>
-                <th>Plataforma</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($row = $result->fetch_assoc()): ?>
+    <div class="table-responsive">
+        <table class="misas-table">
+            <thead>
                 <tr>
-                    <td><?= htmlspecialchars($row['titulo_misa']) ?></td>
-                    <td><?= htmlspecialchars($row['fecha_misa']) ?></td>
-                    <td><?= htmlspecialchars($row['hora_misa']) ?></td>
-                    <td><?= htmlspecialchars($row['tipo_misa']) ?></td>
-                    <td><?= htmlspecialchars($row['enlaceVideo_transmision'] ?? '-') ?></td>
-                    <td><?= htmlspecialchars($row['plataforma_transmision'] ?? '-') ?></td>
-                    <td><?= htmlspecialchars($row['estado_transmision'] ?? '-') ?></td>
-                    <td class="acciones">
-                        <?php if ($row['id_misa']): ?>
-                            <form action="editar_misa.php" method="GET" style="display:inline;">
-                                <input type="hidden" name="id_misa" value="<?= $row['id_misa'] ?>">
-                                <button class="editar">Editar Misa</button>
-                            </form>
-                        <?php endif; ?>
-
-                        <?php if ($row['id_transmision']): ?>
-                            <form action="editar_transmisiones.php" method="GET" style="display:inline;">
-                                <input type="hidden" name="id_transmision" value="<?= $row['id_transmision'] ?>">
-                                <button class="editar">Editar Transmisión</button>
-                            </form>
-                            <form action="eliminar_misa_y_transmision.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="id_misa" value="<?= $row['id_misa'] ?>">
-                                <input type="hidden" name="id_transmision" value="<?= $row['id_transmision'] ?>">
-                                <button class="eliminar" onclick="return confirm('¿Eliminar misa y transmisión asociada?');">Eliminar</button>
-                            </form>
-                        <?php endif; ?>
-                    </td>
+                    <th>Título de Misa</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Tipo</th>
+                    <th>Enlace Video</th>
+                    <th>Plataforma</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($row['titulo_misa']) ?></td>
+                        <td><?= htmlspecialchars($row['fecha_misa']) ?></td>
+                        <td><?= htmlspecialchars($row['hora_misa']) ?></td>
+                        <td><?= htmlspecialchars($row['tipo_misa']) ?></td>
+                        <td><?= htmlspecialchars($row['enlaceVideo_transmision'] ?? '-') ?></td>
+                        <td><?= htmlspecialchars($row['plataforma_transmision'] ?? '-') ?></td>
+                        <td><?= htmlspecialchars($row['estado_transmision'] ?? '-') ?></td>
+                        <td class="acciones">
+                            <?php if ($row['id_misa']): ?>
+                                <form action="editar_misa.php" method="GET" style="display:inline;">
+                                    <input type="hidden" name="id_misa" value="<?= $row['id_misa'] ?>">
+                                    <button class="editar">Editar Misa</button>
+                                </form>
+                            <?php endif; ?>
+
+                            <?php if ($row['id_transmision']): ?>
+                                <form action="editar_transmisiones.php" method="GET" style="display:inline;">
+                                    <input type="hidden" name="id_transmision" value="<?= $row['id_transmision'] ?>">
+                                    <button class="editar">Editar Transmisión</button>
+                                </form>
+                                <form action="eliminar_misa_y_transmision.php" method="POST" style="display:inline;">
+                                    <input type="hidden" name="id_misa" value="<?= $row['id_misa'] ?>">
+                                    <input type="hidden" name="id_transmision" value="<?= $row['id_transmision'] ?>">
+                                    <button class="eliminar" onclick="return confirm('¿Eliminar misa y transmisión asociada?');">Eliminar</button>
+                                </form>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>

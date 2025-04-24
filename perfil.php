@@ -39,7 +39,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Perfil - Misae Solemnes</title>
-    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="stylesheet" href="css/perfil.css">
     <link rel="icon" href="assets/icon/cruzar (1).png">
 </head>
 <body>
@@ -47,7 +47,7 @@ $conn->close();
         <h1>MISAE SOLEMNES ✝️</h1>
         <nav>
             <a href="pos/inicio.html">INICIO</a>
-            <a href="#">ACERCA DE</a>
+            <a href="">ACERCA DE</a>
             <a href="pos/transmisiones.php">TRANSMISIONES</a>
             <a href="/pos/logout.html">CERRAR SESIÓN</a>
         </nav>
@@ -121,7 +121,7 @@ $conn->close();
             <section class="form-container">
                 <h3>Acceder a Administrador</h3>
                 <center>
-                <a href="/api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="/assets/icon/cruzar.png" width="50"></a>
+                <a href="./api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="assets/icon/cruzar.png" width="50"></a>
                 </center>
             </section>
         <?php endif; ?>
