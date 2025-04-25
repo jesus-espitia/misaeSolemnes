@@ -118,3 +118,9 @@ footer {
     font-size: 0.9rem;
     margin-top: 4rem;
 }
+@media screen and (max-width: 820px){
+    .form_editar_misas{
+        flex-direction: column;
+        width: 70%;
+    }
+}

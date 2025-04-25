@@ -6,14 +6,26 @@
     <title>Misae Solemnes | TRANSMISIONES</title>
     <link rel="stylesheet" href="../css/transmisiones.css">
     <link rel="icon" href="../assets/icon/cruzar (1).png">
+    <script src="../js/menu.js" defer></script>
 </head>
 
 <body>
     <header>
         <h1>MISAE SOLEMNES ✝️</h1>
-        <nav>
+        <div class="menu-container">
+            <a id="toggle" href="#"><span></span></a>
+            <div id="menu">
+              <ul>
+                <li><a href="inicio.html">INICIO</a></li>
+                <li><a href="acercaDe.html">ACERCA DE</a></li>
+                <li><a href="../perfil.php">PERFIL</a></li>
+                <li><a href="logout.html">CERRAR SESIÓN</a></li>
+              </ul>
+            </div>
+        </div>
+        <nav class="menu">
             <a href="inicio.html">INICIO</a>
-            <a href="#">ACERCA DE</a>
+            <a href="acercaDe.html">ACERCA DE</a>
             <a href="../perfil.php">PERFIL</a>
             <a href="logout.html">CERRAR SESIÓN</a>
         </nav>

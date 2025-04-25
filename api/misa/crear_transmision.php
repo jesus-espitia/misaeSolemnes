@@ -21,10 +21,10 @@ if (empty($enlace) || empty($estado) || empty($misa_id) || empty($plataforma)) {
 }
 
 // Insertar transmisión
-$query = "INSERT INTO TRANSMISIONES (enlaceVideo_transmision, estado_transmision, plataforma_transmision, misa_id, id_usuario)
-            VALUES (?, ?, ?, ?, ?)";
+$query = "INSERT INTO TRANSMISIONES (enlaceVideo_transmision, estado_transmision, plataforma_transmision, misa_id)
+            VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("sssii", $enlace, $estado, $plataforma, $misa_id, $usuario_id);
+$stmt->bind_param("sssi", $enlace, $estado, $plataforma, $misa_id);
 $stmt->execute();
 
 if ($stmt->affected_rows > 0) {

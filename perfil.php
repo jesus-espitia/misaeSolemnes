@@ -39,15 +39,27 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Perfil - Misae Solemnes</title>
-    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="stylesheet" href="css/perfil.css">
     <link rel="icon" href="assets/icon/cruzar (1).png">
+    <script src="js/menu.js" defer></script>
 </head>
 <body>
     <header>
         <h1>MISAE SOLEMNES ✝️</h1>
-        <nav>
+        <div class="menu-container">
+            <a id="toggle" href="#"><span></span></a>
+            <div id="menu">
+              <ul>
+                <li><a href="pos/inicio.html">INICIO</a></li>
+                <li><a href="pos/acercaDe.html">ACERCA DE</a></li>
+                <li><a href="pos/transmisiones.php">TRANSMISIONES</a></li>
+                <li><a href="/pos/logout.html">CERRAR SESIÓN</a></li>
+              </ul>
+            </div>
+        </div>
+        <nav class="menu">
             <a href="pos/inicio.html">INICIO</a>
-            <a href="#">ACERCA DE</a>
+            <a href="pos/acercaDe.html">ACERCA DE</a>
             <a href="pos/transmisiones.php">TRANSMISIONES</a>
             <a href="/pos/logout.html">CERRAR SESIÓN</a>
         </nav>
@@ -121,7 +133,7 @@ $conn->close();
             <section class="form-container">
                 <h3>Acceder a Administrador</h3>
                 <center>
-                <a href="/api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="/assets/icon/cruzar.png" width="50"></a>
+                <a href="./api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="assets/icon/cruzar.png" width="50"></a>
                 </center>
             </section>
         <?php endif; ?>

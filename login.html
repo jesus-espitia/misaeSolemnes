@@ -6,13 +6,25 @@
     <title>Misae Solemnes | LOGIN</title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="icon" href="assets/icon/cruzar (1).png">
+    <script src="js/menu.js" defer></script>
 </head>
 <body>
     <header>
         <h1>MISAE SOLEMNES ✝️</h1>
-        <nav>
+        <div class="menu-container">
+            <a id="toggle" href="#"><span></span></a>
+            <div id="menu">
+              <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="acercaDe.html">ACERCA DE</a></li>
+                <li><a href="login.html">LOGIN</a></li>
+                <li><a href="registro.html">REGISTRO</a></li>
+              </ul>
+            </div>
+        </div>
+        <nav class="menu">
             <a href="index.html">INICIO</a>
-            <a href="#">ACERCA DE</a>
+            <a href="acercaDe.html">ACERCA DE</a>
             <a href="login.html">LOGIN</a>
             <a href="registro.html">REGISTRO</a>
         </nav>
@@ -21,7 +33,7 @@
     <main>
         <section class="form-container">
             <h2>Iniciar sesión</h2>
-            <form action="../api/usuario/login.php" method="POST">
+            <form action="/api/usuario/login.php" method="POST">
                 <input type="email" name="correo_usuario" placeholder="Correo electrónico" autocomplete="off">
                 <input type="password" name="contrasena_usuario" placeholder="Contraseña" autocomplete="off">
                 <button type="submit">Entrar</button>

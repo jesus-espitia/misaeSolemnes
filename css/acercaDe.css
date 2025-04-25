@@ -2,13 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
 }
 
 body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f0f0dd;
     color: #3c3c3c;
-}   
+}
 
 
 header {
@@ -149,7 +151,6 @@ li a:focus {
     color: #fff;
 }
 /* menu hamburguesa */
-
 .menu{
     display: block;
 }
@@ -163,62 +164,70 @@ li a:focus {
 .menu a:hover {
     text-decoration: underline;
 }
-
-main {
-    flex: 1;
+main{
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
 }
-
-.formulario {
-    background-color: #8c6239;
-    color: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    max-width: 400px;
-    width: 100%;
-    font-size: 18px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
-}
-
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-}
-
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #5c3b22;
+.hero-text {
+    background-color: #8B5C3E;
     color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    text-align: center;
+    padding: 4rem 1rem 5rem 1rem;
+    width: 100%;
+    border-radius: 0 0 50% 50%;
+    font-size: 1.1rem;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
-
-button:hover {
-    background-color: #4a2f18;
+.hero-text2{
+    color: #3c2b1a;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 1000px;
+    font-size: 1.2rem;
+    text-align: center;
 }
-
+.hero-img img {
+    max-width: 300px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.hero-text3{
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+.hero-text3 p{
+    background-color: #5C3B1D;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 600px;
+    font-size: 1.5rem;
+    border: 3px solid #E6C16E;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+}
+.hero-img2 img {
+    max-width: 470px;
+    padding: 2rem 0;
+}
+.hero-text4{
+    background-color: #8B5C3E;
+    color: white;
+    text-align: center;
+    margin-top: 3rem;
+    border-radius: 10px;
+    max-width: 40em;
+    font-size: 1.5rem;
+    border: 3px solid #E6C16E;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+}
+.hero-text4 p{
+    padding: 1rem 1.5rem;
+}
 footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     background-color: #3c2b1a;
     color: white;
@@ -230,6 +239,11 @@ footer {
 @media screen and (max-width: 820px){
     .menu{
         display: none;
+    }
+    .hero-text3{
+        flex-direction: column;
+        gap: 0;
+        text-align: center;
     }
     .menu-container{
         display: inline-block;
