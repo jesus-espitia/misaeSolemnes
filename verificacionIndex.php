@@ -77,6 +77,7 @@ require_once __DIR__ . '/../includes/db/connect.php';
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/php/verificar2/missae_solemnes/assets/js/validate_form.js" defer></script>
+    
 
 </body>
 </html>

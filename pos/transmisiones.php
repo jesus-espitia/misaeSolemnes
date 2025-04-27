@@ -10,6 +10,9 @@
 </head>
 
 <body>
+<div id="page-loader" style="display: none;">
+        <div class="spinner"></div>
+    </div>
     <header>
         <h1>MISAE SOLEMNES ✝️</h1>
         <div class="menu-container">
@@ -41,5 +44,7 @@
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>
+    
+    <script src="../js/loader.js"></script>
 </body>
 </html>
