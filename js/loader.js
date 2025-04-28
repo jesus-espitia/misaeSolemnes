@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setTimeout(() => {
                 loader.classList.add('fade-out'); // Suaviza el ocultamiento
-            }, 2500); // Empieza a desvanecer antes
+            }, 800); // Empieza a desvanecer antes
 
             setTimeout(() => {
                 window.location.href = href; // Redirige a la nueva página
-            }, 3000); // Tiempo total hasta que cambia
+            }, 1000); // Tiempo total hasta que cambia
         });
     });
 });

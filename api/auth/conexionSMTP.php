@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:\xampp\htdocs\missaeJesus\phpmailer\vendor\autoload.php'; // Ajuste según su método de instalación
+require_once 'D:\Programas\Xampp\htdocs\phpmailer\vendor\autoload.php';// Ajuste según su método de instalación
 
 $mail = new PHPMailer(true); // Habilitar excepciones
 

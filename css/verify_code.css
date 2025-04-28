@@ -242,6 +242,81 @@ main {
     border: 3px solid #E6C16E;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 2rem;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+main h2 {
+    font-size: 2rem;
+    color: #5C3B1D;
+}
+
+main p {
+    max-width: 500px;
+    color: #3c3c3c;
+    font-size: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+    color: #5C3B1D;
+}
+
+form input[type="text"] {
+    padding: 0.7rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 0.7rem 1.5rem;
+    background-color: #8B5C3E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #5C3B1D;
+}
+
+#resend_code {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+#resend_code a {
+    color: #8B5C3E;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#resend_code a:hover {
+    text-decoration: underline;
+}
 
 
 footer {

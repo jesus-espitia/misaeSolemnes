@@ -29,11 +29,12 @@ if(!$mail->send()){
     die("El mensaje no pudo ser enviado. Error de Mailer: " . $mail->ErrorInfo. "<br>Por favor, vuelva a intentarlo.");
 } else { ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Misae Solemnes | VERIFICAR</title>
+        <link rel="icon" href="assets/icon/cruzar (1).png">
         <link rel="stylesheet" href="css/verify_code.css">
     </head>
 
