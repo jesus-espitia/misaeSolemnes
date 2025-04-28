@@ -1,22 +1,18 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['email_real'])) {
+if(!isset($_SESSION['email']) || !isset($_SESSION['nameInput'])) {
     session_unset();
     die("Acceso directo no autorizado.");
 }
 
-if (!isset($_GET['email']) || !isset($_GET['username'])) {
-    session_unset();
-    die("Por alguna razón no se ha enviado el email o el usuario. Vuelva a intentarlo");
-}
-$email = $_GET['email'];
-$username = $_GET['username'];
+$email = $_SESSION['email'];
+$nameInput = $_SESSION['nameInput'];
 
-include_once 'C:\xampp\htdocs\php\verificar2\missae_solemnes\includes\conexionSMTP.php';
+require_once 'api/utils/conexionSMTP.php';
 
 $mail->setFrom('missaesolemnes@gmail.com', 'Missae Solemnes');
-$mail->addAddress($email, $username);
+$mail->addAddress($email, $nameInput);
 
 $codigo = bin2hex(random_bytes(3)); // Generar un código único
 $_SESSION['codigo'] = $codigo; // Guardar el código en la sesión para su verificación posterior
@@ -38,24 +34,57 @@ if(!$mail->send()){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="css/verify_code.css">
     </head>
-    <body>
-        <form action="" method="">
-            <label for="verification_code">Ingrese el código de verificación(puede que tengas que ver en spam): </label>
-            <input type="text" id="verification_code" name="verification_code" required>
-            <button id="btnSubmit" type="submit">Verificar</button>
-        </form>
 
-        <form action="verify_email.php" method="get"></form>
-            <input type="hidden" name="email" value="<?php echo htmlspecialchars($email); ?>">
-            <input type="hidden" name="username" value="<?php echo htmlspecialchars($username); ?>">
-            <button type="submit">Enviar de nuevo el código</button>
-        </form>
+    <header>
+        <h1>MISAE SOLEMNES ✝️</h1>
+        <div class="menu-container">
+            <a id="toggle" href="#"><span></span></a>
+            <div id="menu">
+                <ul>
+                    <li><a href="index.html">INICIO</a></li>
+                    <li><a href="acercaDe.html">ACERCA DE</a></li>
+                    <li><a href="login.html">LOGIN</a></li>
+                    <li><a href="registro.html">REGISTRO</a></li>
+                </ul>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="index.html">INICIO</a>
+            <a href="acercaDe.html">ACERCA DE</a>
+            <a href="login.html">LOGIN</a>
+            <a href="registro.html">REGISTRO</a>
+        </nav>
+    </header>
+
+    <body>
+    <div id="page-loader" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+        <main>
+            <h2>Verificación de correo electrónico</h2>
+            <p>Hemos enviado un código de verificación a su correo electrónico. Por favor, ingréselo a continuación para verificar su cuenta.</p>
+            <p>Si no ha recibido el correo, revise su carpeta de spam o haga clic en "Enviar de nuevo el código".</p>
+
+            <form action="" method="">
+                <label for="verification_code">Ingrese el código de verificación: </label>
+                <input type="text" id="verification_code" name="verification_code" required>
+                <button id="btnSubmit" type="submit">Verificar</button>
+            </form>
+
+            <p id="resend_code">¿No ha recibido el código? <a href="verify_email.php" id="resend">Enviar de nuevo el código</a></p>
+        </main>
+
+        <footer>
+            © 2025 MISAE SOLEMNES - Todos los derechos reservados.
+        </footer>
+
+    <script src="js/verify_email.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/loader.js"></script>
     </body>
     </html>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/php/verificar2/missae_solemnes/assets/js/verify_email.js"></script>
 
 <?php }
 

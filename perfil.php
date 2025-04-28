@@ -43,29 +43,28 @@ $conn->close();
     <link rel="icon" href="assets/icon/cruzar (1).png">
     <script src="js/menu.js" defer></script>
 </head>
-<body>    
+<body>
     <div id="page-loader" style="display: none;">
         <div class="spinner"></div>
     </div>
-    
     <header>
         <h1>MISAE SOLEMNES ✝️</h1>
         <div class="menu-container">
             <a id="toggle" href="#"><span></span></a>
             <div id="menu">
-              <ul>
-                <li><a href="pos/inicio.html">INICIO</a></li>
-                <li><a href="pos/acercaDe.html">ACERCA DE</a></li>
-                <li><a href="pos/transmisiones.php">TRANSMISIONES</a></li>
-                <li><a href="/pos/logout.html">CERRAR SESIÓN</a></li>
-              </ul>
+                <ul>
+                    <li><a href="pos/inicio.html">INICIO</a></li>
+                    <li><a href="pos/acercaDe.html">ACERCA DE</a></li>
+                    <li><a href="pos/transmisiones.php">TRANSMISIONES</a></li>
+                    <li><a href="pos/logout.html">CERRAR SESIÓN</a></li>
+                </ul>
             </div>
         </div>
         <nav class="menu">
             <a href="pos/inicio.html">INICIO</a>
             <a href="pos/acercaDe.html">ACERCA DE</a>
             <a href="pos/transmisiones.php">TRANSMISIONES</a>
-            <a href="/pos/logout.html">CERRAR SESIÓN</a>
+            <a href="pos/logout.html">CERRAR SESIÓN</a>
         </nav>
     </header>
 
@@ -146,7 +145,6 @@ $conn->close();
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>
-    
     <script src="js/loader.js"></script>
 </body>
 </html>

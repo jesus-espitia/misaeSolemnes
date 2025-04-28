@@ -1,7 +1,8 @@
-const username = document.getElementById("username");
+const nameInput = document.getElementById("nameInput");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const passwordConfirm = document.getElementById("passwordConfirm");
+const country = document.getElementById("countryUser");
 const btnSubmit = document.getElementById("btnSubmit");
 
 function callbackRegex(regex, input) {
@@ -16,16 +17,19 @@ function callbackRegex(regex, input) {
     }
 }
 
-regexUsername = /^(?=.*?[a-zA-Z]{3})[a-zA-Z0-9!@#$%*_+?¡¿\-]{8,21}$/;
+regexnameInput = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ'-]{1,20}\s([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ'-]{1,20})?\s?[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ'-]{1,20}\s?([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ'-]{1,20})?$/;
 regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 regexPassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-_*+!$#?¡¿@%]).{8,30}$/;
+regexCountry = /^[A-Za-záéíóúñÁÉÍÓÚÑüÜ\s'-]+$/
 
 btnSubmit.addEventListener("click", (e) => {
+    console.log("Estoy funcionando");
     e.preventDefault();
 
-    let validUsername = callbackRegex(regexUsername, username);
+    let validnameInput = callbackRegex(regexnameInput, nameInput);
     let validEmail = callbackRegex(regexEmail, email);   
     let validPassword = callbackRegex(regexPassword, password);
+    let validCountry = callbackRegex(regexCountry, country);
     let validConfirmPassword = false;
 
     if (password.value !== passwordConfirm.value || passwordConfirm.value === "") {
@@ -36,22 +40,25 @@ btnSubmit.addEventListener("click", (e) => {
         passwordConfirm.classList.add("is_valid");
         validConfirmPassword = true;
     }
-    if (validUsername && validEmail && validPassword && validConfirmPassword) {
+    if (validnameInput && validEmail && validPassword && validCountry && validConfirmPassword) {
         let data = new FormData();
+        data.append("nameInput", nameInput.value);
         data.append("email", email.value);
+        data.append("password", password.value);
+        data.append("countryUser", country.value);
         const options = {
             method: "POST",
             body: data
         };
 
-        fetch("/php/verificar2/missae_solemnes/includes/auth/validate_email.php", options)
+        fetch("./api/auth/validate_email.php", options)
         .then((response) => response.text())
         .then((response) => {
             try{
                 if (response !== "-1") {
                     console.log(response.is_real);
                     if (response === "1") {
-                        window.location.href = "/php/verificar2/missae_solemnes/public/verify_email.php?email=" + email.value + "&username=" + username.value;
+                        window.location.href = "verify_email.php";
                     } else {
                         console.log("El correo electrónico no es real");
                         Swal.fire({
@@ -71,18 +78,6 @@ btnSubmit.addEventListener("click", (e) => {
         .catch((error) => {
             console.error("Error:", error);
         });
-
-        /*fetch("/php/verificar2/missae_solemnes/includes/auth/get_user_into_db", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: username.value,
-                email: email.value,
-                password: password.value,
-            }),
-        }) */
     } else {
         Swal.fire({
             icon: "error",

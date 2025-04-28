@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<div id="page-loader" style="display: none;">
+    <div id="page-loader" style="display: none;">
         <div class="spinner"></div>
     </div>
     <header>
@@ -18,12 +18,12 @@
         <div class="menu-container">
             <a id="toggle" href="#"><span></span></a>
             <div id="menu">
-              <ul>
-                <li><a href="inicio.html">INICIO</a></li>
-                <li><a href="acercaDe.html">ACERCA DE</a></li>
-                <li><a href="../perfil.php">PERFIL</a></li>
-                <li><a href="logout.html">CERRAR SESIÓN</a></li>
-              </ul>
+                <ul>
+                    <li><a href="inicio.html">INICIO</a></li>
+                    <li><a href="acercaDe.html">ACERCA DE</a></li>
+                    <li><a href="../perfil.php">PERFIL</a></li>
+                    <li><a href="logout.html">CERRAR SESIÓN</a></li>
+                </ul>
             </div>
         </div>
         <nav class="menu">

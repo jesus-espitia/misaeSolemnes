@@ -4,37 +4,34 @@ const verificationCode = document.getElementById('verification_code');
 btnSubmit.addEventListener('click', function(event) {
     event.preventDefault(); // Evitar el envío del formulario por defecto
 
-    
     if(verificationCode.value.length !== 6){
         Swal.fire({
             icon: 'error',
-            title: 'Error',
+            title: 'Errorrrr',
             text: 'El código de verificación no puede estar vacío ni ser diferente de seis digitos.',
         });
     }else{
-        let data = new FormData();
-        data.append('verification_code', verificationCode.value);
+        let code = new FormData();
+        code.append('verification_code', verificationCode.value);
+        console.log(code.get('verification_code'));
         const options = {
             method: 'POST',
-            body: data
+            body: code
         };
-        fetch("/php/verificar2/missae_solemnes/includes/auth/validate_code.php", options) 
+        fetch("./api/auth/validate_code.php", options) 
         .then(response => response.text())
         .then((response) => {
             try{
                 if (response !== "-1") {
                     console.log(response.is_real);
                     if (response === "1") {
-                    Swal.fire({
-                        icon: "success",
-                        title:"Código correcto",
-                        text: "El código de verificación que ingresó es correcto",
-                    });
+                        console.log("El código de verificación es correcto");
+                        window.location.replace("./api/usuario/registrar.php");
                     } else {
                     Swal.fire({
                         icon: "error",
-                        title: "Código incorrecto",
-                        text: "El código de verificación que ingresó es incorrecto",
+                        title: "Código incorrectoooa",
+                        text: "El código de verificación que ingresó es incorrectoooo",
                     });
                     }
                 }else {
