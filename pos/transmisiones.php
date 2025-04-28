@@ -6,7 +6,6 @@
     <title>Misae Solemnes | TRANSMISIONES</title>
     <link rel="stylesheet" href="../css/transmisiones.css">
     <link rel="icon" href="../assets/icon/cruzar (1).png">
-    <script src="../js/menu.js" defer></script>
 </head>
 
 <body>
@@ -44,7 +43,7 @@
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>
-    
+    <script src="../js/menu.js" defer></script>
     <script src="../js/loader.js"></script>
 </body>
 </html>

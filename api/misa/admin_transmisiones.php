@@ -48,7 +48,6 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <title>Misae Solemnes | ADMINISTRADOR</title>
     <link rel="stylesheet" href="../../css/admin.css">
-    <script src="../../js/menu.js" defer></script>
     <link rel="icon" href="../../assets/icon/cruzar (1).png">
 </head>
 <body>
@@ -57,13 +56,13 @@ $result = $stmt->get_result();
         <div class="menu-container">
             <a id="toggle" href="#"><span></span></a>
             <div id="menu">
-              <ul>
-                <li><a href="/pos/inicio.html">INICIO</a></li>
-                <li><a href="/pos/acercaDe.html">ACERCA DE</a></li>
-                <li><a href="/pos/transmisiones.php">TRASMICIONES</a></li>
-                <li><a href="/perfil.php">PERFIL</a></li>
-                <li><a href="/pos/logout.html">CERRAR SESIÓN</a></li>
-              </ul>
+                <ul>
+                    <li><a href="/pos/inicio.html">INICIO</a></li>
+                    <li><a href="/pos/acercaDe.html">ACERCA DE</a></li>
+                    <li><a href="/pos/transmisiones.php">TRASMICIONES</a></li>
+                    <li><a href="/perfil.php">PERFIL</a></li>
+                    <li><a href="/pos/logout.html">CERRAR SESIÓN</a></li>
+                </ul>
             </div>
         </div>
         <nav class="menu">
@@ -127,6 +126,8 @@ $result = $stmt->get_result();
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>
+    
+    <script src="../../js/menu.js" defer></script>
 </body>
 </html>
 
