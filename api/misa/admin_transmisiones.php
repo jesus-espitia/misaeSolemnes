@@ -51,6 +51,9 @@ $result = $stmt->get_result();
     <link rel="icon" href="../../assets/icon/cruzar (1).png">
 </head>
 <body>
+    <div id="page-loader" style="display: none;">
+        <div class="spinner"></div>
+    </div>
     <header>
         <h1>MISAE SOLEMNES ✝️</h1>
         <div class="menu-container">
@@ -126,8 +129,8 @@ $result = $stmt->get_result();
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>
-    
-    <script src="../../js/menu.js" defer></script>
+    <script src="js/loader.js"></script>
+    <script src="../../js/menu.js"></script>
 </body>
 </html>
 

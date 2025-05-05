@@ -25,20 +25,38 @@ $stmtSacerdote->execute();
 $resultSacerdote = $stmtSacerdote->get_result();
 $esSacerdote = $resultSacerdote->num_rows > 0;
 $sacerdote = $esSacerdote ? $resultSacerdote->fetch_assoc() : null;
+$_SESSION['es_sacerdote'] = $esSacerdote;
+
+
 
 // Obtener parroquias para el dropdown
 $sqlParroquias = "SELECT id_parroquia, nombre_parroquia FROM PARROQUIAS";
 $resultParroquias = $conn->query($sqlParroquias);
 $parroquias = $resultParroquias->fetch_all(MYSQLI_ASSOC);
 
+
+
+// Obtener misas solo del sacerdote actual con nombre de parroquia
+if ($esSacerdote) {
+    $sqlMis = "SELECT id_misa, titulo_misa FROM MISAS WHERE sacerdote_id = ?";
+    $stmtMis = $conn->prepare($sqlMis);
+    $stmtMis->bind_param("i", $sacerdote['id_sacerdote']);
+    $stmtMis->execute();
+    $resultMis = $stmtMis->get_result();
+    $misas = $resultMis->fetch_all(MYSQLI_ASSOC);
+}
+
+
 $conn->close();
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Perfil - Misae Solemnes</title>
+    <title>Misae Solemnes | PERFIL</title>
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="icon" href="assets/icon/cruzar (1).png">
     <script src="js/menu.js" defer></script>
@@ -74,6 +92,18 @@ $conn->close();
             <p><strong>Correo:</strong> <?= htmlspecialchars($usuario['correo_usuario']) ?></p>
             <p><strong>País:</strong> <?= htmlspecialchars($usuario['pais_usuario']) ?></p>
             <p><strong>Miembro desde:</strong> <?= htmlspecialchars($usuario['fechaRegistro_usuario']) ?></p>
+            <?php if ($esSacerdote): ?>
+                <section class="form-container">
+                    <h3>Administración de Transmisiones</h3>
+                    <center>
+                    <a href="./api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="assets/icon/cruzar.png" width="50"></a>
+                    </center>
+                </section>
+                <section class="form-container">
+                    <h3>Nuevo Sacerdote</h3>
+                    <a href="api/misa/crear_sacerdote.php" style="text-decoration: none; color: black;" onmouseover="this.style.color='red'; this.style.textDecoration='underline';" onmouseout="this.style.color='black'; this.style.textDecoration='none';" ">➕ Crear Sacerdote</a>
+                </section>
+            <?php endif; ?>
         </section>
 
         <?php if ($esSacerdote): ?>
@@ -116,9 +146,16 @@ $conn->close();
                     <option value="programada">Programada</option>
                     <option value="finalizada">Finalizada</option>
                 </select>
-
-                <label for="misa_id">Misa relacionada (ID):</label>
-                <input type="number" name="misa_id">
+                
+                <label>Misa relacionada:</label>
+                <select name="misa_id" class="select2" required>
+                    <option value="">Seleccione una misa</option>
+                    <?php foreach ($misas as $m): ?>
+                        <option value="<?= $m['id_misa'] ?>">
+                            <?= htmlspecialchars($m['titulo_misa']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
 
                 <label for="plataforma">Plataforma:</label>
                 <select name="plataforma_transmision">
@@ -132,19 +169,24 @@ $conn->close();
         
         <?php endif; ?>
 
-        <?php if ($esSacerdote): ?>
-            <section class="form-container">
-                <h3>Acceder a Administrador</h3>
-                <center>
-                <a href="./api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="assets/icon/cruzar.png" width="50"></a>
-                </center>
-            </section>
-        <?php endif; ?>
+
     </main>
 
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>
     <script src="js/loader.js"></script>
+<!-- Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<!-- Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<!-- Activar Select2 -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        $('.select2').select2();
+    });
+</script>
+
 </body>
 </html>

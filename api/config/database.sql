@@ -75,12 +75,6 @@ VALUES
 ('Parroquia Nuestra Señora', 'Av. Bolívar 123', 'Bogotá', '3100000002', 'nuestra@iglesia.com'),
 ('Parroquia Cristo Rey', 'Cra 45 #33-21', 'Cali', '3100000003', 'cristorey@iglesia.com');
 
--- Asegúrate de que los IDs coincidan con los insertados antes.
-INSERT INTO SACERDOTES (nombre_sacerdote, correoElectronico_sacerdote, telefono_sacerdote, parroquia_id, usuario_id)
-VALUES 
-('Padre Kenny', 'kennyflorian20@gmail.com', '3107654321', 1, 1),
-('Padre Santiago', 'santyvalethony03@gmail.com', '3107654322', 2, 2),
-('Padre Jesús', 'espitiaguzmanjesusmanuel@gmail.com', '3107654323', 3, 3);
 
 
 INSERT INTO PETICIONES (contenido, tipo, usuario_id, misa_id)

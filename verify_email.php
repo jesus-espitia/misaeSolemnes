@@ -20,9 +20,40 @@ $_SESSION['codigo'] = $codigo; // Guardar el código en la sesión para su verif
 //jcardona904
 
 // Enviando email de texto plano
-$mail->isHTML(false); // Establecer formato de email a texto plano
+$mail->isHTML(true); // Establecer formato de email a texto plano
 $mail->Subject = 'Código de verificación de correo Missae Solemnes';
-$mail->Body    = $codigo;
+// Contenido del correo
+$mail->Body = '
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificación de correo</title>
+</head>
+<body style="margin:0;padding:0;background-color:white;background-image:linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc),linear-gradient(45deg, #ccc 25%, white 25%, white 75%, #ccc 75%, #ccc);background-size:30px 30px;background-position:0 0,15px 15px;font-family: Arial, sans-serif; color: #5C4033;">
+
+    <div style="max-width:600px;margin:30px auto;padding:20px;background-color:#fff;border-radius:8px;box-shadow:0px 0px 10px rgba(0,0,0,0.1);">
+        <h1 style="text-align:center;color:#8B4513;">MISSAE SOLEMNES ✝️</h1>
+        <p style="font-size:18px;color:#5C4033;">Hola <strong>' . htmlspecialchars($nameInput) . '</strong>,</p>
+        <p style="font-size:16px;color:#5C4033;">Gracias por registrarte. Tu código de verificación es:</p>
+        
+        <div style="text-align:center;margin:30px 0;">
+            <span style="display:inline-block;padding:15px 30px;font-size:24px;font-weight:bold;color:white;background-color:#A0522D;border-radius:8px;">' . htmlspecialchars($codigo) . '</span>
+        </div>
+        
+        <p style="font-size:14px;color:#5C4033;">Por favor, ingresa este código en la página para completar tu verificación.</p>
+        
+        <p style="font-size:12px;color:#5C4033;">Si no solicitaste este correo, puedes ignorarlo.</p>
+
+        <hr style="margin:30px 0;border:0;border-top:1px solid #D2B48C;">
+        <footer style="text-align:center;font-size:12px;color:#A0522D;">
+            © 2025 MISSAE SOLEMNES - Todos los derechos reservados.
+        </footer>
+    </div>
+
+</body>
+</html>
+';
 
 // Enviar el email
 if(!$mail->send()){
@@ -65,7 +96,7 @@ if(!$mail->send()){
     </div>
         <main>
             <h2>Verificación de correo electrónico</h2>
-            <p>Hemos enviado un código de verificación a su correo electrónico. Por favor, ingréselo a continuación para verificar su cuenta.</p>
+            <p>Hemos enviado un código de verificación a su correo electrónico (Spam). Por favor, ingréselo a continuación para verificar su cuenta.</p>
             <p>Si no ha recibido el correo, revise su carpeta de spam o haga clic en "Enviar de nuevo el código".</p>
 
             <form action="" method="">
