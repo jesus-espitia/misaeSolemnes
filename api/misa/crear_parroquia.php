@@ -3,7 +3,6 @@ session_start();
 require_once __DIR__ . '/../config/database.php';
 $conn = conectarBD();
 
-$mensaje = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'] ?? '';
@@ -14,12 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($nombre && $direccion && $telefono && $ciudad) {
         $stmt = $conn->prepare("INSERT INTO PARROQUIAS (nombre_parroquia, direccion_parroquia, telefono_parroquia, ciudad_parroquia) VALUES (?, ?, ?, ?)");
         if ($stmt->execute([$nombre, $direccion, $telefono, $ciudad])) {
-            $mensaje = "✅ Parroquia creada correctamente.";
+            header("Location: ../utils/alerta.php?tipo=success&titulo=¡BIEN HECHO!&mensaje=✅+Parroquia+creada+correctamente&redirect=../misa/crear_parroquia.php");
+            
         } else {
-            $mensaje = "❌ Error al guardar la parroquia.";
+            header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=❌+Error+al+guardar+la+parroquia&redirect=../misa/crear_parroquia.php");
         }
     } else {
-        $mensaje = "⚠️ Por favor, completa todos los campos.";
+        header("Location: ../utils/alerta.php?tipo=info&titulo=¡ERROR!&mensaje=⚠️+Por+favor,+completa+todos+los+campos&redirect=../misa/crear_parroquia.php");
     }
 }
 ?>
@@ -65,23 +65,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <main>
     <div class="formulario">
         <h2 style="margin-bottom: 1rem;">Registrar Parroquia</h2>
-
-        <?php if ($mensaje): ?>
-            <div class="mensaje"><?= htmlspecialchars($mensaje) ?></div>
-        <?php endif; ?>
-
         <form method="post">
             <label>Nombre de la parroquia:</label>
-            <input type="text" name="nombre" required>
+            <input type="text" name="nombre" >
 
             <label>Dirección:</label>
-            <input type="text" name="direccion" required>
+            <input type="text" name="direccion" >
 
             <label>Teléfono:</label>
-            <input type="text" name="telefono" required>
+            <input type="text" name="telefono" >
 
             <label>Ciudad o País:</label>
-            <input type="text" name="ciudad" required>
+            <input type="text" name="ciudad" >
             <button type="submit">Guardar Parroquia</button>
                 <br><br>
                 <p style="margin-top:-15px;">¿Ya creaste tu parroquia? <a href="crear_sacerdote.php" style="color: #E6C16E; font-weight:bold;">Regresar</a></p>

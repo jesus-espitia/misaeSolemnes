@@ -20,7 +20,6 @@ $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
     header("Location: ../utils/alerta.php?tipo=warning&titulo=¡ADVERTENCIA!&mensaje=Acceso+restringido.+Solo+para+sacerdotes&redirect=../../../pos/inicio.html");
-    echo "<p>Acceso restringido. Solo para sacerdotes</p>";
     exit;
 }
 

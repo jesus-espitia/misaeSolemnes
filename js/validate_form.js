@@ -81,9 +81,9 @@ btnSubmit.addEventListener("click", (e) => {
     } else {
         Swal.fire({
             icon: "error",
-            title: "Please fill the form correctly...",
-            text: "Check the format of the fields and try again.",
-          });
+            title: "Por favor rellene el formulario correctamente...",
+            text: "Verifique el formato de los campos y vuelva a intentarlo.",
+            });
     }
 
 });

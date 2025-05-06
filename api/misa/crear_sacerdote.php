@@ -15,7 +15,7 @@ if (!$esSacerdote) {
 
 // Verificar si ya se autenticó con clave
 $claveValida = $_SESSION['acceso_crear_sacerdote'] ?? false;
-$mensaje = '';
+$mensaje = "";
 
 // Cargar parroquias y usuarios
 $parroquias = $conn->query("SELECT id_parroquia, nombre_parroquia FROM PARROQUIAS")->fetch_all(MYSQLI_ASSOC);
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['acceso_crear_sacerdote'] = true;
             $claveValida = true;
         } else {
-            $mensaje = "⚠️ Clave incorrecta.";
+            header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=⚠️+Clave+incorrecta&redirect=../misa/crear_sacerdote.php");
         }
     } elseif ($claveValida && isset($_POST['nombre'])) {
         $nombre = $_POST['nombre'];
@@ -43,10 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("sssii", $nombre, $correo, $telefono, $parroquia, $usuario_id);
 
         if ($stmt->execute()) {
-            $mensaje = "✅ Sacerdote creado correctamente.";
+            header("Location: ../utils/alerta.php?tipo=success&titulo=¡BIEN HECHO!&mensaje=✅+Sacerdote+creado+correctamente&redirect=../misa/crear_sacerdote.php" . $stmt->error);
+            $mensaje = "";
             $_SESSION['acceso_crear_sacerdote'] = false;
         } else {
-            $mensaje = "❌ Error al guardar: " . $stmt->error;
+            header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=❌+Error+al+guardar: &redirect=../misa/crear_sacerdote.php". $stmt->error);
+            $mensaje = "" . $stmt->error;
         }
     }
 }
@@ -97,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (!$claveValida): ?>
                 <form method="post">
                     <label>Contraseña:</label>
-                    <input type="password" name="clave" required placeholder="Inserte clave de administrador">
+                    <input type="password" name="clave" required placeholder="Inserte clave de administrador" autocomplete="off">
                     <button type="submit">Verificar</button>
                 </form>
             <?php else: ?>

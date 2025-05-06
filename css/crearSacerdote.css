@@ -393,13 +393,3 @@ footer {
     padding: 8px 12px;
 }
 
-/* Mensajes del sistema */
-.mensaje {
-    background-color: #d0e9c6;
-    color: #3c763d;
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-}
