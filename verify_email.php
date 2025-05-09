@@ -11,7 +11,6 @@ $nameInput = $_SESSION['nameInput'];
 
 require_once 'api/utils/conexionSMTP.php';
 
-$mail->setFrom('missaesolemnes@gmail.com', 'Missae Solemnes');
 $mail->addAddress($email, $nameInput);
 
 $codigo = bin2hex(random_bytes(3)); // Generar un código único
@@ -119,5 +118,4 @@ if(!$mail->send()){
     </html>
 
 <?php }
-
 

@@ -1,8 +1,7 @@
 <?php
+require_once '../../phpmailer/vendor/autoload.php';// Ajuste según su método de instalación
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require_once 'D:\Programas\Xampp\htdocs\phpmailer\vendor\autoload.php';// Ajuste según su método de instalación
 
 $mail = new PHPMailer(true); // Habilitar excepciones
 
@@ -15,3 +14,4 @@ $mail->Password = 'wyzj yvln lmmp rswd';
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 $mail->CharSet = 'UTF-8'; // Establecer la codificación de caracteres a UTF-8
+$mail->setFrom('missaesolemnes@gmail.com', 'Missae Solemnes');
