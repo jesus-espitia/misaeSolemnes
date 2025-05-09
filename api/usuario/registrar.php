@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once __DIR__ . '/../config/database.php';
 
 $conn = conectarBD();
@@ -13,13 +17,18 @@ session_start();
 $hash = password_hash($_SESSION['password'], PASSWORD_BCRYPT);
 
 // Insertar en BD
-$stmt = $conn->prepare("INSERT INTO USUARIOS (nombre_usuario, correo_usuario, contraseña_usuario, pais_usuario) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $_SESSION['nameInput'], $_SESSION['email'], $hash, $_SESSION['countryUser']);
+try {
+    $stmt = $conn->prepare("INSERT INTO USUARIOS (nombre_usuario, correo_usuario, contraseña_usuario, pais_usuario) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $_SESSION['nameInput'], $_SESSION['email'], $hash, $_SESSION['countryUser']);
+    $stmt->execute();
 
-if ($stmt->execute()) {
     header("Location: ../utils/alerta.php?tipo=success&titulo=¡BIEN+HECHO!&mensaje=Ya+puedes+ingresar&redirect=../../login.html");
-} else {
-    header("Location: ../utils/alerta.php?tipo=info&titulo=¡YA+TIENES+UNA+CUENTA!&mensaje=El+correo+ya+existe&redirect=../../registro.html");
+} catch (mysqli_sql_exception $e) {
+    if ($e->getCode() === 1062) { // Código de entrada duplicada
+        header("Location: ../utils/alerta.php?tipo=info&titulo=¡No+se+pudo+registrar+el+usuario!&mensaje=El+correo+electronico+que+ingresaste+ya+esta+registrado&redirect=../../registro.html");
+    } else {
+        header("Location: ../utils/alerta.php?tipo=error&titulo=¡Error,+no+se+pudo+registrar!&mensaje=Tranquilo(a),+fue+un+error+de+nuestro+servidor.+Vuelve+a+intentarlo&redirect=../../registro.html");
+    }
 }
 
 $stmt->close();
