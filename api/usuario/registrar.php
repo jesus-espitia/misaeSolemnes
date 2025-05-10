@@ -24,11 +24,7 @@ try {
 
     header("Location: ../utils/alerta.php?tipo=success&titulo=¡BIEN+HECHO!&mensaje=Ya+puedes+ingresar&redirect=../../login.html");
 } catch (mysqli_sql_exception $e) {
-    if ($e->getCode() === 1062) { // Código de entrada duplicada
-        header("Location: ../utils/alerta.php?tipo=info&titulo=¡No+se+pudo+registrar+el+usuario!&mensaje=El+correo+electronico+que+ingresaste+ya+esta+registrado&redirect=../../registro.html");
-    } else {
-        header("Location: ../utils/alerta.php?tipo=error&titulo=¡Error,+no+se+pudo+registrar!&mensaje=Tranquilo(a),+fue+un+error+de+nuestro+servidor.+Vuelve+a+intentarlo&redirect=../../registro.html");
-    }
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡Error,+no+se+pudo+registrar!&mensaje=Tranquilo(a),+fue+un+error+de+nuestro+servidor.+Vuelve+a+intentarlo&redirect=../../registro.html");
 }
 
 $stmt->close();

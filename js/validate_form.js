@@ -23,7 +23,6 @@ regexPassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-_*+!$#?¡¿@%]).{8
 regexCountry = /^[A-Za-záéíóúñÁÉÍÓÚÑüÜ\s'-]+$/
 
 btnSubmit.addEventListener("click", (e) => {
-    console.log("Estoy funcionando");
     e.preventDefault();
 
     let validnameInput = callbackRegex(regexnameInput, nameInput);
@@ -54,29 +53,40 @@ btnSubmit.addEventListener("click", (e) => {
         fetch("./api/auth/validate_email.php", options)
         .then((response) => response.text())
         .then((response) => {
-            try{
-                if (response !== "-1") {
-                    console.log(response.is_real);
-                    if (response === "1") {
-                        window.location.href = "verify_email.php";
-                    } else {
-                        console.log("El correo electrónico no es real");
-                        Swal.fire({
-                            icon: "error",
-                            title: "Email no existente",
-                            text: "El correo electrónico que ingresaste no es real",
-                        });
-                    }
-                }else{
-                    throw new Error("Por alguna razón no se pudo verificar el correo electrónico. Vuelva a intentarlo");
-                }
-            } catch (error) {
-                console.error("Error:", error);
-                
+            console.log(response);
+            switch (response){
+                case "-1":
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error interno. Disculpe",
+                        text: "Por alguna razon no se pudo verificar el correo electronico. Vuelva a intentarlo."
+                    });
+                    break;
+                case "0":
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error, el correo no es real",
+                        text: "El correo electronico que ingresaste no es real. Verificalo y vuelve a intentarlo."
+                    });
+                    break;
+                case "1":
+                    window.location.href = "verify_email.php";
+                    break;
+                case "2":
+                    Swal.fire({
+                        icon: "info",
+                        title: "No se pudo ingresar el usuario",
+                        text: "El correo electrónico que ingresaso ya esta en uso. Prueba con otro y vuelve a intentarlo",
+                    });
+                    break;
             }
         })
-        .catch((error) => {
-            console.error("Error:", error);
+        .catch(() => {
+            Swal.fire({
+                icon: "error",
+                title: "Ha ocurrido un error interno",
+                text: "No te preocupes no es culpa tuya. Vuelve a intentarlo.",
+            });
         });
     } else {
         Swal.fire({
