@@ -84,3 +84,7 @@ VALUES
 ('Intención privada.', 'privada', 4, 2),
 ('Gracias por una nueva oportunidad.', 'pública', 3, 4);
 
+-- Anadir la columna "quiere_correos" a la tabla usuarios para que 
+--decida si desea que le lleguen correos o no
+
+ALTER TABLE USUARIOS ADD COLUMN quiere_correos ENUM("si", "no") DEFAULT "si" NOT NULL;

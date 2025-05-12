@@ -27,6 +27,7 @@ if ($result->num_rows === 1) {
     if (password_verify($contrasena, $usuario['contraseña_usuario'])) {
         $_SESSION['usuario_id'] = $usuario['id_usuario'];
         $_SESSION['nombre'] = $usuario['nombre_usuario'];
+        $_SESSION['email'] = $correo;
         header("Location: ../../perfil.php");
         exit();
     } else {

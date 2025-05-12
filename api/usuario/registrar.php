@@ -21,11 +21,12 @@ try {
     $stmt = $conn->prepare("INSERT INTO USUARIOS (nombre_usuario, correo_usuario, contraseña_usuario, pais_usuario) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $_SESSION['nameInput'], $_SESSION['email'], $hash, $_SESSION['countryUser']);
     $stmt->execute();
+    $stmt->close();
 
+    session_unset();
+    session_destroy();
     header("Location: ../utils/alerta.php?tipo=success&titulo=¡BIEN+HECHO!&mensaje=Ya+puedes+ingresar&redirect=../../login.html");
 } catch (mysqli_sql_exception $e) {
     header("Location: ../utils/alerta.php?tipo=error&titulo=¡Error,+no+se+pudo+registrar!&mensaje=Tranquilo(a),+fue+un+error+de+nuestro+servidor.+Vuelve+a+intentarlo&redirect=../../registro.html");
 }
 
-$stmt->close();
-$conn->close();

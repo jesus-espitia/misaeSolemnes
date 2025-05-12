@@ -1,0 +1,50 @@
+Array
+(
+    [quiereCorreos] => 1
+)
+Array
+(
+    [quiereCorreos] => 1
+)
+No se actualizó ninguna fila
+Array
+(
+    [quiereCorreos] => 1
+)
+No se actualizó ninguna fila
+
+
+Array
+(
+    [quiereCorreos] => 1
+)
+No se actualizó ninguna fila
+Email usado: 
+Array
+(
+    [quiereCorreos] => 1
+)
+No se actualizó ninguna fila
+Email usado: 
+Array
+(
+)
+Actualización exitosa
+Email usado: alejandrozziixx@gmail.com
+Array
+(
+    [quiereCorreos] => 1
+)
+Actualización exitosa
+Email usado: alejandrozziixx@gmail.com
+Array
+(
+    [quiereCorreos] => 1
+)
+Actualización exitosa
+Email usado: santyvalethony03@gmail.com
+Array
+(
+)
+Actualización exitosa
+Email usado: santyvalethony03@gmail.com

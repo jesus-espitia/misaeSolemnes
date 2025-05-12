@@ -269,15 +269,16 @@ main {
     margin-top: 15px;
     padding: 10px;
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #32c23a;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-}
+    font-weight: 900;
+}id
 
 .form-container button:hover {
-    background-color: #45a049;
+    background-color: #368f3a;
 }
 
 footer {
@@ -297,4 +298,11 @@ footer {
     .menu-container {
         display: inline-block;
     }
+}
+
+/*Estilo para el botón checkbox si desea que se le envien correos*/
+input.quiereCorreos{
+    width: auto;
+    transform: scale(1.3);
+    margin-left: 5px;
 }

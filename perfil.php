@@ -17,6 +17,9 @@ $stmtUsuario->execute();
 $resultUsuario = $stmtUsuario->get_result();
 $usuario = $resultUsuario->fetch_assoc();
 
+//Guaradar el estado actual de la columna "quiere_correos"
+$quiere_correos = $usuario["quiere_correos"] == "si" ? true : false;
+
 // Verificar si el usuario también es sacerdote (usando usuario_id, no el correo)
 $sqlSacerdote = "SELECT * FROM SACERDOTES WHERE usuario_id = ?";
 $stmtSacerdote = $conn->prepare($sqlSacerdote);
@@ -26,7 +29,6 @@ $resultSacerdote = $stmtSacerdote->get_result();
 $esSacerdote = $resultSacerdote->num_rows > 0;
 $sacerdote = $esSacerdote ? $resultSacerdote->fetch_assoc() : null;
 $_SESSION['es_sacerdote'] = $esSacerdote;
-
 
 
 // Obtener parroquias para el dropdown
@@ -92,10 +94,22 @@ $conn->close();
             <p><strong>Correo:</strong> <?= htmlspecialchars($usuario['correo_usuario']) ?></p>
             <p><strong>País:</strong> <?= htmlspecialchars($usuario['pais_usuario']) ?></p>
             <p><strong>Miembro desde:</strong> <?= htmlspecialchars($usuario['fechaRegistro_usuario']) ?></p>
+            <br>
+            <form action="api/usuario/cambiarCorreo.php" method="post" id="formQuiere">
+                <label style="display:inline;">
+                    <?php if ($quiere_correos){ ?>
+                        ¿Deseas que te enviemos correos cada que se inicie una transmisión? (activado)
+                        <input type="checkbox" name="quiereCorreos" class="quiereCorreos" value="1" checked onchange="setTimeout(() => document.getElementById('formQuiere').submit(), 100);">
+                    <?php } else { ?>
+                        ¿Deseas que te enviemos correos cada que se inicie una transmisión? (desactivado)
+                        <input type="checkbox" name="quiereCorreos" class="quiereCorreos" value="1" onchange="setTimeout(() => document.getElementById('formQuiere').submit(), 100);">
+                    <?php } ?>
+                </label>
+            </form>
             <?php if ($esSacerdote): ?>
                 <section class="form-container">
                     <h3>Administración de Transmisiones</h3>
-                    <center>
+                  
                     <a href="./api/misa/admin_transmisiones.php" title="ADMINISTRADOR"><img style="align-items: center;" src="assets/icon/cruzar.png" width="50"></a>
                     </center>
                 </section>
@@ -143,7 +157,7 @@ $conn->close();
                 <label for="estado">Estado de la Transmisión:</label>
                 <select name="estado_transmision">
                     <option value="en vivo">En Vivo</option>
-                    <option value="programada">Programada</option>
+                    <option value="programada">P© 2025 MISAE SOLEMNES - Todos los derechos reservados.rogramada</option>
                     <option value="finalizada">Finalizada</option>
                 </select>
                 
@@ -176,17 +190,17 @@ $conn->close();
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>
     <script src="js/loader.js"></script>
-<!-- Select2 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<!-- Select2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<!-- Activar Select2 -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        $('.select2').select2();
-    });
-</script>
+    <!-- Activar Select2 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('.select2').select2();
+        });
+    </script>
 
 </body>
 </html>
