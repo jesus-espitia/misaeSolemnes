@@ -157,7 +157,7 @@ $conn->close();
                 <label for="estado">Estado de la Transmisión:</label>
                 <select name="estado_transmision">
                     <option value="en vivo">En Vivo</option>
-                    <option value="programada">P© 2025 MISAE SOLEMNES - Todos los derechos reservados.rogramada</option>
+                    <option value="programada">Programada</option>
                     <option value="finalizada">Finalizada</option>
                 </select>
                 

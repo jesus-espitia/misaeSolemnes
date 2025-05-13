@@ -1,3 +1,4 @@
+-- Active: 1746742835313@@127.0.0.1@3306@misae_solemnes
 CREATE DATABASE IF NOT EXISTS misae_solemnes;
 USE misae_solemnes;
 
@@ -88,3 +89,5 @@ VALUES
 --decida si desea que le lleguen correos o no
 
 ALTER TABLE USUARIOS ADD COLUMN quiere_correos ENUM("si", "no") DEFAULT "si" NOT NULL;
+
+SELECT nombre_usuario, correo_usuario FROM USUARIOS WHERE quiere_correos = 'si';

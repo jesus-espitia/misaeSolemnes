@@ -19,7 +19,7 @@ $_SESSION['codigo'] = $codigo; // Guardar el código en la sesión para su verif
 //jcardona904
 
 // Enviando email de texto plano
-$mail->isHTML(true); // Establecer formato de email a texto plano
+$mail->isHTML(true); // Establecer formato de email a html
 $mail->Subject = 'Código de verificación de correo Missae Solemnes';
 // Contenido del correo
 $mail->Body = '
