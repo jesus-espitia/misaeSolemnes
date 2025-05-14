@@ -53,5 +53,31 @@
     </footer>
     <script src="../js/menu.js" defer></script>
     <script src="../js/loader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filtroEstado = document.getElementById('filtro-estado');
+            const contenedorTransmisiones = document.getElementById('contenedor-transmisiones');
+            
+            // Manejar cambio de filtro
+            filtroEstado.addEventListener('change', function() {
+                const estado = this.value;
+                
+                // Mostrar loader
+                document.getElementById('page-loader').style.display = 'flex';
+                
+                // Hacer petición AJAX para actualizar las transmisiones
+                fetch(`../api/misa/mostrar_transmisiones.php?estado=${estado}`)
+                    .then(response => response.text())
+                    .then(html => {
+                        contenedorTransmisiones.innerHTML = html;
+                        document.getElementById('page-loader').style.display = 'none';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('page-loader').style.display = 'none';
+                    });
+            });
+        });
+    </script>
 </body>
 </html>
