@@ -44,30 +44,67 @@ if ($result && $result->num_rows > 0) {
         $url = $row['enlaceVideo_transmision'];
         $titulo = $row['titulo_misa'];
         $tipo = $row['tipo_misa'];
+        $estado = $row['estado_transmision'];
+        $fecha = date('d/m/Y', strtotime($row['fecha_misa']));
+        $hora = date('H:i', strtotime($row['hora_misa']));
+        
+        // Determinar clase CSS según estado
+        $claseEstado = '';
+        $textoEstado = '';
+        $estadoColor = '';
+        
+        if ($estado === 'en vivo') {
+            $claseEstado = 'en-vivo';
+            $textoEstado = 'EN VIVO';
+            $estadoColor = 'estado-en-vivo';
+        } elseif ($estado === 'programada') {
+            $claseEstado = 'programada';
+            $textoEstado = 'PROGRAMADA';
+            $estadoColor = 'estado-programada';
+        } else {
+            $claseEstado = 'finalizada';
+            $textoEstado = 'FINALIZADA';
+            $estadoColor = 'estado-finalizada';
+        }
 
         // Extraer ID del video de YouTube
         preg_match("/(?:v=|be\/)([a-zA-Z0-9_-]{11})/", $url, $matches);
         $videoId = $matches[1] ?? null;
 
-        // Si hay ID válido, se muestra el iframe
+        echo '<div class="card-transmision ' . $claseEstado . '">';
+        echo '<h3>' . htmlspecialchars($titulo) . '</h3>';
+        echo '<p class="tipo-misa">' . htmlspecialchars($tipo) . '</p>';
+        echo '<span class="estado-transmision ' . $estadoColor . '">' . $textoEstado . '</span>';
+        echo '<p class="fecha-hora">' . $fecha . ' a las ' . $hora . '</p>';
+        
         if ($videoId) {
-            echo '<div class="card-transmision">';
-            echo '<h3>' . htmlspecialchars($titulo) . '</h3>';
-            echo '<p class="tipo-misa">' . htmlspecialchars($tipo) . '</p>';
-            echo '<iframe src="https://www.youtube.com/embed/' . htmlspecialchars($videoId) . '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
-            echo '</div>';
+            if ($estado === 'en vivo') {
+                echo '<iframe src="https://www.youtube.com/embed/' . htmlspecialchars($videoId) . '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+            } else {
+                // Para programadas/finalizadas no autoplay
+                echo '<iframe src="https://www.youtube.com/embed/' . htmlspecialchars($videoId) . '" frameborder="0" allowfullscreen></iframe>';
+            }
         } else {
-            echo '<div class="card-transmision">';
-            echo '<h3>' . htmlspecialchars($titulo) . '</h3>';
-            echo '<p class="tipo-misa">' . htmlspecialchars($tipo) . '</p>';
             echo '<p style="color:red;">⚠️ Enlace inválido</p>';
-            echo '</div>';
         }
+        
+        echo '</div>';
     }
 
     echo '</div>';
 } else {
-    echo "<p style='text-align:center;'>No hay transmisiones en vivo actualmente.</p>";
+    $mensaje = "No hay transmisiones ";
+    if ($estado === 'en vivo') {
+        $mensaje .= "en vivo actualmente.";
+    } elseif ($estado === 'programada') {
+        $mensaje .= "programadas en este momento.";
+    } elseif ($estado === 'finalizada') {
+        $mensaje .= "finalizadas aún.";
+    } else {
+        $mensaje .= "disponibles.";
+    }
+    
+    echo "<p style='text-align:center;'>" . $mensaje . "</p>";
 }
 
 $conn->close();
