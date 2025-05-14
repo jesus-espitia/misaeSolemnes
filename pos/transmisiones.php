@@ -38,7 +38,6 @@
                 <option value="en vivo">En vivo</option>
                 <option value="programada">Programadas</option>
                 <option value="finalizada">Finalizadas</option>
-                <option value="todas">Todas</option>
             </select>
         </div>
         
