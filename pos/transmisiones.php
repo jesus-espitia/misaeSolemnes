@@ -33,12 +33,20 @@
         </nav>
     </header>
     <main>
+        <div class="filtros-transmisiones">
+            <select id="filtro-estado" class="selector-filtro">
+                <option value="en vivo">En vivo</option>
+                <option value="programada">Programadas</option>
+                <option value="finalizada">Finalizadas</option>
+                <option value="todas">Todas</option>
+            </select>
+        </div>
+        
         <div class="grid-transmisiones">
             <div id="contenedor-transmisiones">
                 <?php include '../api/misa/mostrar_transmisiones.php'; ?>
             </div>
         </div>
-
     </main>
     <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
