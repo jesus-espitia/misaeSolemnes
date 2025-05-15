@@ -65,10 +65,8 @@ CREATE TABLE PETICIONES (
     FOREIGN KEY (misa_id) REFERENCES MISAS(id_misa)
 );
 
-
 ALTER TABLE SACERDOTES ADD COLUMN usuario_id INT UNIQUE;
 ALTER TABLE SACERDOTES ADD FOREIGN KEY (usuario_id) REFERENCES USUARIOS(id_usuario);
-
 
 INSERT INTO PARROQUIAS (nombre_parroquia, direccion_parroquia, ciudad_parroquia, telefono_parroquia, correoElectronico_parroquia)
 VALUES 
@@ -90,4 +88,17 @@ VALUES
 
 ALTER TABLE USUARIOS ADD COLUMN quiere_correos ENUM("si", "no") DEFAULT "si" NOT NULL;
 
-SELECT nombre_usuario, correo_usuario FROM USUARIOS WHERE quiere_correos = 'si';
+
+-- Se elimina y cambia la foreing key con la misa, que es más rigido, además de que tiene que
+--existir es misa para relacionar. Se añade la nueva constraint para con la parroquia, más flexible
+ALTER TABLE PETICIONES
+DROP FOREIGN KEY peticiones_ibfk_2;
+
+ALTER TABLE PETICIONES
+CHANGE misa_id parroquia_id INT;
+
+
+ALTER TABLE PETICIONES
+ADD CONSTRAINT fk_correcta_parroquia
+FOREIGN KEY (parroquia_id)
+REFERENCES PARROQUIAS(id_parroquia);
