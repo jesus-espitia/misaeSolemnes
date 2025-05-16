@@ -317,3 +317,33 @@ footer {
         display: inline-block;
     }
 }
+
+/*Estilo de la campana de notificaciones*/
+
+.icon-hover {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+.icon-hover:hover {
+    transform: scale(1.25);
+    cursor: pointer;
+}
+
+/*CSS para el indicador de notificaciones no leidas*/
+.campana {
+    position: relative;
+}
+
+.campana::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white; /* Opcional: borde para que se vea bien sobre fondos claros */
+    z-index: 1;
+}
