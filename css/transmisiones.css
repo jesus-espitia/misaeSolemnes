@@ -238,8 +238,8 @@ main {
 
 /* Estilos para transmisiones programadas sin enlace */
 .logo-programada {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     margin: 20px auto;
     display: block;
     opacity: 0.7;
@@ -330,8 +330,7 @@ main {
     margin-bottom: 10px;
 }
 
-.card-transmision iframe,
-.card-transmision img {
+.card-transmision iframe{
     width: 100%;
     height: 200px;
     border-radius: 10px;
