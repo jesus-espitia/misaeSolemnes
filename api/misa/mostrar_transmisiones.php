@@ -67,25 +67,32 @@ if ($result && $result->num_rows > 0) {
             $estadoColor = 'estado-finalizada';
         }
 
-        // Extraer ID del video de YouTube
-        preg_match("/(?:v=|be\/)([a-zA-Z0-9_-]{11})/", $url, $matches);
-        $videoId = $matches[1] ?? null;
-
         echo '<div class="card-transmision ' . $claseEstado . '">';
         echo '<h3>' . htmlspecialchars($titulo) . '</h3>';
         echo '<p class="tipo-misa">' . htmlspecialchars($tipo) . '</p>';
         echo '<span class="estado-transmision ' . $estadoColor . '">' . $textoEstado . '</span>';
         echo '<p class="fecha-hora">' . $fecha . ' a las ' . $hora . '</p>';
         
-        if ($videoId) {
-            if ($estado === 'en vivo') {
-                echo '<iframe src="https://www.youtube.com/embed/' . htmlspecialchars($videoId) . '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
-            } else {
-                // Para programadas/finalizadas no autoplay
-                echo '<iframe src="https://www.youtube.com/embed/' . htmlspecialchars($videoId) . '" frameborder="0" allowfullscreen></iframe>';
-            }
+        // Mostrar iframe o imagen según el caso
+        if ($url === 'PROGRAMADA_SIN_ENLACE') {
+            // Mostrar logo para transmisiones programadas sin enlace
+            echo '<img src="../assets/img/LOGO.png" alt="Misa Programada" class="logo-programada">';
+            echo '<p class="mensaje-programada">Transmisión programada</p>';
         } else {
-            echo '<p style="color:red;">⚠️ Enlace inválido</p>';
+            // Extraer ID del video de YouTube
+            preg_match("/(?:v=|be\/)([a-zA-Z0-9_-]{11})/", $url, $matches);
+            $videoId = $matches[1] ?? null;
+
+            if ($videoId) {
+                if ($estado === 'en vivo') {
+                    echo '<iframe src="https://www.youtube.com/embed/' . htmlspecialchars($videoId) . '?autoplay=1" frameborder="0" allowfullscreen></iframe>';
+                } else {
+                    // Para programadas/finalizadas no autoplay
+                    echo '<iframe src="https://www.youtube.com/embed/' . htmlspecialchars($videoId) . '" frameborder="0" allowfullscreen></iframe>';
+                }
+            } else {
+                echo '<p style="color:red;">⚠️ Enlace inválido</p>';
+            }
         }
         
         echo '</div>';
