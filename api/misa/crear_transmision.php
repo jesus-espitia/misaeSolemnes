@@ -15,9 +15,21 @@ $misa_id = $_POST['misa_id'] ?? null;
 $plataforma = $_POST['plataforma_transmision'] ?? '';
 $usuario_id = $_SESSION['usuario_id'];
 
-if (empty($enlace) || empty($estado) || empty($misa_id) || empty($plataforma)) {
+// Validaciones básicas
+if (empty($estado) || empty($misa_id) || empty($plataforma)) {
     header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=Todos+los+campos+son+obligatorios&redirect=../../perfil.php");
     exit;
+}
+
+// Si es programada, el enlace es opcional
+if ($estado !== 'programada' && empty($enlace)) {
+    header("Location: ../utils/alerta.php?tipo=error&titulo=¡ERROR!&mensaje=El+enlace+es+obligatorio+para+este+estado&redirect=../../perfil.php");
+    exit;
+}
+
+// Si es programada y no tiene enlace, usar valor especial
+if ($estado === 'programada' && empty($enlace)) {
+    $enlace = 'PROGRAMADA_SIN_ENLACE';
 }
 
 // Insertar transmisión
