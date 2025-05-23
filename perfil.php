@@ -136,12 +136,13 @@ $conn->close();
         <?php if ($esSacerdote): ?>
         <section class="form-container">
             <h3>Crear Nueva Transmisión</h3>
-            <form action="api/misa/crear_transmision.php" method="POST">
+            <form action="api/misa/crear_transmision.php" method="POST" id="form-transmision">
                 <label for="enlace">Enlace del video (YouTube):</label>
-                <input type="url" name="enlaceVideo_transmision" autocomplete="off">
+                <input type="url" name="enlaceVideo_transmision" id="enlace-video" autocomplete="off">
+                <small id="enlace-help" class="form-text text-muted">Opcional para transmisiones programadas</small>
 
                 <label for="estado">Estado de la Transmisión:</label>
-                <select name="estado_transmision">
+                <select name="estado_transmision" id="estado-transmision">
                     <option value="en vivo">En Vivo</option>
                     <option value="programada">Programada</option>
                     <option value="finalizada">Finalizada</option>
@@ -165,6 +166,7 @@ $conn->close();
                 </select>
 
                 <button type="submit">Crear Transmisión</button>
+            </form>
         </section>
         
         <?php endif; ?>
@@ -185,6 +187,22 @@ $conn->close();
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         $('.select2').select2();
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const estadoSelect = document.getElementById('estado-transmision');
+        const enlaceInput = document.getElementById('enlace-video');
+        
+        estadoSelect.addEventListener('change', function() {
+            if (this.value === 'programada') {
+                enlaceInput.required = false;
+                enlaceInput.placeholder = "Opcional para programadas";
+            } else {
+                enlaceInput.required = true;
+                enlaceInput.placeholder = "";
+            }
+        });
     });
 </script>
 
