@@ -236,9 +236,29 @@ main {
     box-shadow: 0 0 0 2px rgba(60, 43, 26, 0.3);
 }
 
-/* Estilo para las tarjetas de transmisiones programadas */
+/* Estilos para transmisiones programadas sin enlace */
+.logo-programada {
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+    display: block;
+    opacity: 0.7;
+}
+
+.mensaje-programada {
+    text-align: center;
+    color: #5c3b22;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Ajustes para tarjetas de programadas sin enlace */
 .card-transmision.programada {
-    border-left: 5px solid #FFA500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
 }
 
 /* Estilo para las tarjetas de transmisiones finalizadas */
