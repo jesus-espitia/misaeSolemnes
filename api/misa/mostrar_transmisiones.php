@@ -76,7 +76,7 @@ if ($result && $result->num_rows > 0) {
         // Mostrar iframe o imagen según el caso
         if ($url === 'PROGRAMADA_SIN_ENLACE') {
             // Mostrar logo para transmisiones programadas sin enlace
-            echo '<img src="../assets/icon/cruzar(1).png" alt="Misa Programada" class="logo-programada">';
+            echo '<img src="../assets/icon/cruzar (1).png" alt="Misa Programada" class="logo-programada">';
             echo '<p class="mensaje-programada">Transmisión programada</p>';
         } else {
             // Extraer ID del video de YouTube
