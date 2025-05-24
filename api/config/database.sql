@@ -124,3 +124,6 @@ INSERT INTO PETICIONES (contenido, tipo, fecha_envio, usuario_id, parroquia_id) 
 ('Ruego por la unidad de mi familia que está dividida por rencores antiguos. Que el perdón y la reconciliación lleguen a nuestros corazones. Pido especialmente que en la misa del domingo se rece por esta intención y que el padre Luis, que es experto en consejería familiar, pueda guiarnos.', 'pública', '2023-11-21', 4, 3),
 ('Pido por todos los enfermos de cáncer, especialmente por aquellos que no tienen familia o recursos. Que encuentren consuelo en Dios y buena atención médica. Desearía que esta intención se incluyera en la misa de sanación del mes que viene.', 'pública', '2023-11-22', 5, 2),
 ('Solicito oraciones por mi vocación, pues estoy discerniendo si debo entrar al seminario. Que Dios me ilumine y me muestre claramente su voluntad. Me gustaría que el padre Miguel, que fue mi director espiritual en el retiro, pudiera ofrecer una misa por esta intención.', 'privada', '2023-11-23', 6, 1);
+
+
+SELECT id_parroquia, nombre_parroquia FROM PARROQUIAS

@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php session_start(); 
+include '../api/config/database.php';
+$conn = conectarBD();
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: ../index.html');
+    exit();
+}
+$result = $conn->query("SELECT id_parroquia, nombre_parroquia FROM PARROQUIAS");
+$parroquias = $result->fetch_all(MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -91,7 +100,7 @@
         
                         <div class="form-group">
                             <label>Tu petición:</label>
-                            <textarea id="autoresizing"name="contenido" required></textarea>
+                            <textarea id="peticion"name="contenido" required></textarea>
                             <p><small>máximo 300 caracteres</small></p>
                         </div>
                         <br><br>
@@ -105,11 +114,13 @@
                         <br><br>
                         <div class="form-group">
                             <label>A que parroquias deseas enviar la peticion:</label>
-                            <select name="parroquia_id">
-                                <optgroup label="selecciona la paroquia">
-                                    <option value="1">Misa Dominical</option>
-                                    <option value="2">Misa de Sanación</option>
-                                </optgroup>
+                            <select name="parroquia_id" id="parroquia_id" required>
+                                <option value="0">Selecciona una parroquia</option>
+                                <?php foreach ($parroquias as $p): ?>
+                                    <option style="font-weight: bold;" value="<?= $p['id_parroquia'] ?>">
+                                        <?= htmlspecialchars($p['nombre_parroquia']) ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
 
                         </div>
@@ -119,7 +130,7 @@
                                 <input type="reset">
                             </label>
                             <label class="action-btn">
-                                <input type="submit">
+                                <input type="submit" id="btn-enviar" value="enviar">
                             </label>
                         </div>
                     </form>
@@ -133,7 +144,7 @@
     </footer>
 
     <script>
-        textarea = document.querySelector("#autoresizing");
+        textarea = document.querySelector("#peticion");
         textarea.addEventListener('input', autoResize, false);
 
         function autoResize() {
@@ -142,5 +153,6 @@
         }
     </script>
     <script src="../js/form_peticiones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

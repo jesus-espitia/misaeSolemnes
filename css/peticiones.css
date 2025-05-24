@@ -300,6 +300,7 @@ position: absolute;
     font-size: 18px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
     margin-top: 20px;
+    margin-left: 20px;
 }
 
 label {
