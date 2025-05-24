@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Misae Solemnes | HOME</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/peticiones.css">
     <link rel="icon" href="../assets/icon/cruzar (1).png">
     <script src="../js/menu.js" defer></script>
 </head>
@@ -66,35 +68,79 @@
         </nav>
     </header>
 
-    <video src="" autoplay></video>
     <main>
-        <div class="hero-img">
-            <img src="../assets/img/LOGO.png" alt="Logo Misae Solemnes">
-        </div>
+        <aside>
+            <div id="div-aside">
+                <h1 class="titulos">secciones</h1>
+                <ul>
+                    <li class="aside-elements"><a href="#peticiones" class="aside-links">Ir a tus peticiones</a></li>
+                    <li class="aside-elements"><a href="#enviar-peticion" class="aside-links">Formulario para enviar una petición</a></li>
+                </ul>
+            </div>
+        </aside>
+        <section id="sec-peticiones">
+            <div id="contenedor-peticiones">
+                <div id="peticiones">
+                    <h1 class="titulos">Tus peticiones</h1>
+                    <div class="lista-peticones"><?php include '../api/usuario/traerPeticiones.php'; ?></div>
+                </div>
+                <div id="enviar-peticion">
+                    <h1 class="titulos">Envia una petición</h1>
+                    <form class="form-peticion" action="procesar_peticion.php" method="POST">
+                        <input type="hidden" name="user_email" value="rsany13x0@gmail.com">
+        
+                        <div class="form-group">
+                            <label>Tu petición:</label>
+                            <textarea id="autoresizing"name="contenido" required></textarea>
+                            <p><small>máximo 300 caracteres</small></p>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label>Tipo de petición:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="tipo" value="pública" checked> Pública (visible para otros)</label>
+                                <label><input type="radio" name="tipo" value="privada"> Privada (solo visible para ti)</label>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label>A que parroquias deseas enviar la peticion:</label>
+                            <select name="parroquia_id">
+                                <optgroup label="selecciona la paroquia">
+                                    <option value="1">Misa Dominical</option>
+                                    <option value="2">Misa de Sanación</option>
+                                </optgroup>
+                            </select>
 
-        <div class="hero-text">
-            <p>
-                La plataforma <strong>"Misae Solemnes"</strong> conecta diferentes parroquias de Colombia para que
-                transmitan en vivo sus misas a fieles que no pueden asistir presencialmente.
-                Cada parroquia tiene sacerdotes encargados de las misas, y los usuarios pueden registrarse para seguir
-                transmisiones, dejar peticiones.
-            </p>
-        </div>
+                        </div>
+                        <br><br>
+                        <div class="form-actions">
+                            <label class="action-btn">
+                                <input type="reset">
+                            </label>
+                            <label class="action-btn">
+                                <input type="submit">
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
-
-    <footer>
+        <footer>
         © 2025 MISAE SOLEMNES - Todos los derechos reservados.
     </footer>
-    
-    <script src="../js/loader.js"></script>
 
     <script>
-        function togglePopup() {
-            const popup = document.getElementById('notificaciones-popup');
-            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        textarea = document.querySelector("#autoresizing");
+        textarea.addEventListener('input', autoResize, false);
+
+        function autoResize() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
         }
     </script>
+    <script src="../js/form_peticiones.js"></script>
 </body>
-
 </html>

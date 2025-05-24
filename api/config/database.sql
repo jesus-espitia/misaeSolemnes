@@ -102,3 +102,25 @@ ALTER TABLE PETICIONES
 ADD CONSTRAINT fk_correcta_parroquia
 FOREIGN KEY (parroquia_id)
 REFERENCES PARROQUIAS(id_parroquia);
+
+
+--Alterar la tabla peticiones para que contenido llegue hasta 300 caracteres
+ALTER TABLE `PETICIONES` CHANGE `contenido` `contenido` VARCHAR(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
+
+--inserciones para la tabla peticiones 
+INSERT INTO PETICIONES (contenido, tipo, fecha_envio, usuario_id, parroquia_id) VALUES
+-- Peticiones públicas
+('Pido por la salud de mi madre que está enferma de gravedad, que Dios le dé fortaleza y sanación completa.', 'pública', '2023-11-15', 1, 1),
+('Ruego que recen por mi familia para que superemos esta crisis económica y encontremos soluciones con la ayuda divina.', 'pública', '2023-11-16', 2, 3),
+('Pido oraciones por mi hijo que está pasando por una depresión muy fuerte, y que la misa la pudiera hacer el padre Alberto, a quien admira mucho.', 'pública', '2023-11-17', 3, 2),
+('Solicito oraciones por la paz en el mundo, especialmente en aquellos países que sufren guerras y violencia sin sentido.', 'pública', '2023-11-18', 4, 1),
+('Pido por mi matrimonio que está pasando por momentos muy difíciles, que Dios nos ilumine y nos ayude a recuperar el amor y la comunicación.', 'pública', '2023-11-19', 5, 3),
+-- Peticiones privadas
+('Ruego en privado por la conversión de mi hermano que se ha alejado de la fe, que el Espíritu Santo toque su corazón.', 'privada', '2023-11-15', 6, 1),
+('Pido secretamente por mi trabajo, que encuentre la fuerza para seguir adelante y que Dios me guíe en mis decisiones profesionales.', 'privada', '2023-11-16', 1, 1),
+('Solicito oraciones privadas por mi abuela que cumple 90 años, que la Virgen María la proteja y le dé salud en sus días.', 'privada', '2023-11-17', 2, 2),
+-- Peticiones más largas y específicas
+('Pido con todo mi corazón por la salud de mi sobrino que está en el hospital con una enfermedad rara. Que los médicos encuentren el tratamiento adecuado y que el niño tenga fortaleza. Me gustaría que el padre Juan, que tiene un don especial con los niños, pudiera ofrecer la misa por él.', 'pública', '2023-11-20', 3, 2),
+('Ruego por la unidad de mi familia que está dividida por rencores antiguos. Que el perdón y la reconciliación lleguen a nuestros corazones. Pido especialmente que en la misa del domingo se rece por esta intención y que el padre Luis, que es experto en consejería familiar, pueda guiarnos.', 'pública', '2023-11-21', 4, 3),
+('Pido por todos los enfermos de cáncer, especialmente por aquellos que no tienen familia o recursos. Que encuentren consuelo en Dios y buena atención médica. Desearía que esta intención se incluyera en la misa de sanación del mes que viene.', 'pública', '2023-11-22', 5, 2),
+('Solicito oraciones por mi vocación, pues estoy discerniendo si debo entrar al seminario. Que Dios me ilumine y me muestre claramente su voluntad. Me gustaría que el padre Miguel, que fue mi director espiritual en el retiro, pudiera ofrecer una misa por esta intención.', 'privada', '2023-11-23', 6, 1);

@@ -116,6 +116,11 @@ $conn->close();
                     <?php } ?>
                 </label>
             </form>
+            <div class="peticiones">
+                <button id="btnPeticiones">
+                    <a href="./pos/peticiones.php"> Ir al panel de peticiones</a>
+                </button>
+            </div>
             <?php if ($esSacerdote): ?>
                 <section class="form-container">
                     <h3>Administración de Transmisiones</h3>

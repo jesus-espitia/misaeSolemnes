@@ -336,3 +336,10 @@ input.quiereCorreos{
     border: 2px solid white; /* Opcional: borde para que se vea bien sobre fondos claros */
     z-index: 1;
 }
+
+/*Botón para ir al paner de peticiones*/
+#btnPeticiones a{
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+}
