@@ -95,8 +95,7 @@ $parroquias = $result->fetch_all(MYSQLI_ASSOC);
                 </div>
                 <div id="enviar-peticion">
                     <h1 class="titulos">Envia una petición</h1>
-                    <form class="form-peticion" action="procesar_peticion.php" method="POST">
-                        <input type="hidden" name="user_email" value="rsany13x0@gmail.com">
+                    <form class="form-peticion">
         
                         <div class="form-group">
                             <label>Tu petición:</label>
@@ -107,7 +106,7 @@ $parroquias = $result->fetch_all(MYSQLI_ASSOC);
                         <div class="form-group">
                             <label>Tipo de petición:</label>
                             <div class="radio-group">
-                                <label><input type="radio" name="tipo" value="pública" checked> Pública (visible para otros)</label>
+                                <label><input type="radio" name="tipo" value="pública"> Pública (visible para otros)</label>
                                 <label><input type="radio" name="tipo" value="privada"> Privada (solo visible para ti)</label>
                             </div>
                         </div>

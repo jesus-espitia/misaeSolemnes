@@ -1,7 +1,6 @@
 const button = document.getElementById("btn-enviar");
 const textArea = document.getElementById("peticion");
 const parroquia = document.getElementById("parroquia_id");
-const radioButton = document.querySelector('input[name="tipo"]:checked');
 
 function sanitizarTexto(texto){
     return texto.replace(/[^a-zA-Z0-9 áéíóúÁÉÍÓÚñÑ,.;:¡!¿?()@\-_=+]/g, '');
@@ -9,20 +8,23 @@ function sanitizarTexto(texto){
 
 button.addEventListener("click", function (event) {
     event.preventDefault(); // Prevent the default form submission
+    const radioButton = document.querySelector('input[name="tipo"]:checked');
+    if (!radioButton) {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Debes seleccionar un tipo de petición.",
+    });
+        return;
+    }
     const peticion = textArea.value;
     const sanitizaPeticion = sanitizarTexto(peticion);
     textArea.value = sanitizaPeticion; // Update the textarea with the sanitized value
     const parroquiaId = parroquia.value;
     const tipo = radioButton.value;
+    console.log("Tipo de petición: " + tipo);
 
-    if (parroquiaId === "0") {
-        Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Debes seleccionar una parroquia.",
-        });
-        return;
-    }
+
     if (sanitizaPeticion === "" || peticion.length < 10 || peticion.length > 300) {
         Swal.fire({
             icon: "error",
@@ -31,15 +33,15 @@ button.addEventListener("click", function (event) {
         });
         return;
     }
-    if (tipo === undefined) {
+    if (parroquiaId === "0") {
         Swal.fire({
             icon: "error",
             title: "Error",
-            text: "Debes seleccionar un tipo de petición.",
+            text: "Debes seleccionar una parroquia.",
         });
         return;
     }
-
+    
     let formData = new FormData();
     formData.append("peticion", sanitizaPeticion);
     formData.append("parroquia_id", parroquiaId);

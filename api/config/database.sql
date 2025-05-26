@@ -126,4 +126,5 @@ INSERT INTO PETICIONES (contenido, tipo, fecha_envio, usuario_id, parroquia_id) 
 ('Solicito oraciones por mi vocación, pues estoy discerniendo si debo entrar al seminario. Que Dios me ilumine y me muestre claramente su voluntad. Me gustaría que el padre Miguel, que fue mi director espiritual en el retiro, pudiera ofrecer una misa por esta intención.', 'privada', '2023-11-23', 6, 1);
 
 
-SELECT id_parroquia, nombre_parroquia FROM PARROQUIAS
+-- SELECT p.contenido, p.tipo, p.fecha_envio, u.nombre_usuario FROM PETICIONES p JOIN USUARIOS u ON p.usuario_id = u.id_usuario WHERE p.parroquia_id = 1;
+-- SELECT parroquia_id FROM SACERDOTES WHERE usuario_id = 1;
