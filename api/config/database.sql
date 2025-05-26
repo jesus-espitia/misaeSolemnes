@@ -78,15 +78,10 @@ VALUES
 
 
 
-INSERT INTO PETICIONES (contenido, tipo, usuario_id, misa_id)
-VALUES 
-('Pido por la salud de mi madre.', 'pública', 2, 1),
-('Oración por mi familia.', 'pública', 3, 1),
-('Intención privada.', 'privada', 4, 2),
-('Gracias por una nueva oportunidad.', 'pública', 3, 4);
+
 
 -- Anadir la columna "quiere_correos" a la tabla usuarios para que 
---decida si desea que le lleguen correos o no
+-- decida si desea que le lleguen correos o no
 
 ALTER TABLE USUARIOS ADD COLUMN quiere_correos ENUM("si", "no") DEFAULT "si" NOT NULL;
 
